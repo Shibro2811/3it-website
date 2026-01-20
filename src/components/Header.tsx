@@ -11,6 +11,7 @@ const navLinks = [
   { href: '#about', label: 'О нас' },
   { href: '#team', label: 'Команда' },
   { href: '#contacts', label: 'Контакты' },
+  { href: '#requisites', label: 'Реквизиты' },
 ];
 
 export default function Header() {

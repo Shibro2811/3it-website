@@ -167,14 +167,25 @@ function PricingCard({ tier, index }: { readonly tier: PricingTier; readonly ind
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             onClick={() => document.getElementById('contacts')?.scrollIntoView({ behavior: 'smooth' })}
-            className="w-full py-3 rounded-lg font-semibold transition-all"
+            className="group relative w-full py-3 rounded-lg font-mono overflow-hidden transition-all"
             style={{
               backgroundColor: tier.popular ? tier.color : 'transparent',
               color: tier.popular ? '#0d1117' : tier.color,
               border: `1px solid ${tier.color}`,
             }}
           >
-            Заказать
+            <div
+              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"
+              style={{
+                background: tier.popular
+                  ? `linear-gradient(90deg, ${tier.color}, ${tier.color}dd, ${tier.color})`
+                  : `${tier.color}15`
+              }}
+            />
+            <span className="relative flex items-center justify-center gap-2">
+              <span>Заказать</span>
+              <span className="group-hover:translate-x-0.5 transition-transform">→</span>
+            </span>
           </motion.button>
         </div>
 
@@ -243,15 +254,16 @@ export default function Pricing() {
           transition={{ delay: 0.6 }}
           className="mt-12 text-center"
         >
-          <div className="inline-flex items-center gap-3 px-6 py-3 bg-[#161b22] border border-[#30363d] rounded-full">
+          <div className="inline-flex items-center gap-3 px-6 py-3 bg-[#161b22] border border-[#30363d] rounded-xl">
             <span className="text-[#8b949e] text-sm font-mono">
               // Нужен индивидуальный расчёт?
             </span>
             <button
               onClick={() => document.getElementById('contacts')?.scrollIntoView({ behavior: 'smooth' })}
-              className="text-[#58a6ff] text-sm font-semibold hover:underline"
+              className="group flex items-center gap-1.5 text-[#58a6ff] text-sm font-mono hover:text-[#79c0ff] transition-colors"
             >
-              Свяжитесь с нами
+              <span>Свяжитесь с нами</span>
+              <span className="group-hover:translate-x-0.5 transition-transform">→</span>
             </button>
           </div>
         </motion.div>

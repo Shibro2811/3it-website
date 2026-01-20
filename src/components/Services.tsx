@@ -2,13 +2,14 @@
 
 import { useEffect, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Code, Smartphone, Lightbulb, Cog, LucideIcon, Play, Square } from 'lucide-react';
+import { Code, Smartphone, Lightbulb, Cog, LucideIcon, Play, Terminal } from 'lucide-react';
 import { useRef } from 'react';
 
 interface Service {
   readonly icon: LucideIcon;
   readonly title: string;
   readonly description: string;
+  readonly features: readonly string[];
   readonly fileName: string;
   readonly code: readonly string[];
   readonly output: string;
@@ -20,6 +21,7 @@ const services: readonly Service[] = [
     icon: Code,
     title: 'Веб-разработка',
     description: 'Современные веб-приложения с адаптивным дизайном',
+    features: ['React / Next.js', 'Адаптивный дизайн', 'SEO оптимизация', 'Быстрая загрузка'],
     fileName: 'website.tsx',
     code: [
       'import { createApp } from "3it";',
@@ -37,6 +39,7 @@ const services: readonly Service[] = [
     icon: Smartphone,
     title: 'Мобильные приложения',
     description: 'Нативные приложения для iOS и Android',
+    features: ['iOS / Android', 'React Native', 'Push-уведомления', 'Офлайн-режим'],
     fileName: 'app.swift',
     code: [
       'import SwiftUI',
@@ -56,6 +59,7 @@ const services: readonly Service[] = [
     icon: Lightbulb,
     title: 'IT-консалтинг',
     description: 'Техническое консультирование и архитектура',
+    features: ['Аудит систем', 'Архитектура', 'Оптимизация', 'Масштабирование'],
     fileName: 'consulting.py',
     code: [
       'from consulting import analyze',
@@ -74,6 +78,7 @@ const services: readonly Service[] = [
     icon: Cog,
     title: 'Индивидуальные решения',
     description: 'Уникальное ПО под ваши бизнес-задачи',
+    features: ['CRM системы', 'Автоматизация', 'API интеграции', 'Базы данных'],
     fileName: 'custom.ts',
     code: [
       'interface Solution {',
@@ -129,17 +134,17 @@ function TypingCode({ code, isVisible }: { readonly code: readonly string[]; rea
   const isTypingComplete = currentLine >= code.length;
 
   return (
-    <div className="font-mono text-[13px] leading-relaxed">
+    <div className="font-mono text-[11px] sm:text-[13px] leading-relaxed">
       {code.map((line, lineIndex) => (
         <div key={lineIndex} className="flex">
-          <span className="text-[#484f58] select-none w-6 text-right mr-4">
+          <span className="text-[#484f58] select-none w-5 sm:w-6 text-right mr-3 sm:mr-4">
             {lineIndex + 1}
           </span>
           <span className="text-[#c9d1d9]">
             {highlightSyntax(displayedLines[lineIndex] || '')}
             {lineIndex === currentLine && !isTypingComplete && (
               <motion.span
-                className="inline-block w-2 h-4 bg-[#58a6ff] ml-0.5"
+                className="inline-block w-1.5 sm:w-2 h-3.5 sm:h-4 bg-[#58a6ff] ml-0.5"
                 animate={{ opacity: [1, 0] }}
                 transition={{ duration: 0.5, repeat: Infinity }}
               />
@@ -184,20 +189,20 @@ function highlightSyntax(text: string): JSX.Element {
 function ServiceCard({ service, index }: { readonly service: Service; readonly index: number }) {
   const Icon = service.icon;
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
   const [isRunning, setIsRunning] = useState(false);
   const [showOutput, setShowOutput] = useState(false);
 
   useEffect(() => {
     if (isInView) {
-      const timer = setTimeout(() => setIsRunning(true), index * 300);
+      const timer = setTimeout(() => setIsRunning(true), index * 300 + 500);
       return () => clearTimeout(timer);
     }
   }, [isInView, index]);
 
   useEffect(() => {
     if (isRunning) {
-      const timer = setTimeout(() => setShowOutput(true), 3000);
+      const timer = setTimeout(() => setShowOutput(true), 2500);
       return () => clearTimeout(timer);
     }
   }, [isRunning]);
@@ -205,117 +210,124 @@ function ServiceCard({ service, index }: { readonly service: Service; readonly i
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 50, scale: 0.95 }}
-      animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
+      initial={{ opacity: 0, y: 50 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, delay: index * 0.15 }}
       className="group"
     >
-      {/* macOS Window */}
-      <div className="relative bg-[#1c2128] rounded-xl overflow-hidden border border-[#30363d] shadow-2xl shadow-black/50 hover:shadow-[0_0_60px_-15px] transition-all duration-500"
-        style={{ ['--tw-shadow-color' as string]: `${service.color}30` }}
-      >
-        {/* Window Header */}
-        <div className="flex items-center justify-between px-4 py-3 bg-gradient-to-b from-[#2d333b] to-[#22272e] border-b border-[#30363d]">
-          <div className="flex items-center gap-2">
-            {/* Traffic Lights */}
+      <div className="relative bg-[#161b22] rounded-xl overflow-hidden border border-[#30363d] hover:border-[#484f58] transition-all duration-300">
+        {/* Service Header - Always Visible */}
+        <div className="p-5 sm:p-6 border-b border-[#30363d]">
+          <div className="flex items-start gap-4">
             <motion.div
-              className="flex items-center gap-1.5"
               initial={{ scale: 0 }}
               animate={isInView ? { scale: 1 } : {}}
-              transition={{ delay: index * 0.15 + 0.3, type: "spring" }}
+              transition={{ delay: index * 0.15 + 0.2, type: "spring" }}
+              className="p-3 rounded-xl flex-shrink-0"
+              style={{ backgroundColor: `${service.color}15` }}
             >
-              <div className="w-3 h-3 rounded-full bg-[#ff5f57] shadow-[0_0_6px_#ff5f57]" />
-              <div className="w-3 h-3 rounded-full bg-[#febc2e] shadow-[0_0_6px_#febc2e]" />
-              <div className="w-3 h-3 rounded-full bg-[#28c840] shadow-[0_0_6px_#28c840]" />
+              <Icon className="w-6 h-6" style={{ color: service.color }} />
             </motion.div>
-          </div>
-
-          {/* File Name Tab */}
-          <div className="flex items-center gap-2 px-3 py-1 bg-[#161b22] rounded-md border border-[#30363d]">
-            <Icon className="w-3.5 h-3.5" style={{ color: service.color }} />
-            <span className="text-xs font-mono text-[#8b949e]">{service.fileName}</span>
-          </div>
-
-          {/* Run Button */}
-          <motion.button
-            className="flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-mono transition-all"
-            style={{
-              backgroundColor: isRunning ? `${service.color}20` : 'transparent',
-              color: service.color,
-              border: `1px solid ${service.color}40`
-            }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            {isRunning ? (
-              <>
-                <motion.div
-                  className="w-2 h-2 rounded-full"
-                  style={{ backgroundColor: service.color }}
-                  animate={{ opacity: [1, 0.3, 1] }}
-                  transition={{ duration: 1, repeat: Infinity }}
-                />
-                Running
-              </>
-            ) : (
-              <>
-                <Play className="w-3 h-3" />
-                Run
-              </>
-            )}
-          </motion.button>
-        </div>
-
-        {/* Code Editor */}
-        <div className="p-5 bg-[#0d1117] min-h-[220px]">
-          <TypingCode code={service.code} isVisible={isRunning} />
-        </div>
-
-        {/* Terminal Output */}
-        <motion.div
-          className="border-t border-[#30363d] bg-[#161b22]"
-          initial={{ height: 0, opacity: 0 }}
-          animate={showOutput ? { height: 'auto', opacity: 1 } : {}}
-          transition={{ duration: 0.3 }}
-        >
-          <div className="flex items-center gap-2 px-4 py-2 border-b border-[#30363d]">
-            <Square className="w-3 h-3 text-[#8b949e]" />
-            <span className="text-xs font-mono text-[#8b949e]">Terminal</span>
-          </div>
-          <div className="px-4 py-3">
-            <motion.div
-              className="font-mono text-sm"
-              style={{ color: service.color }}
-              initial={{ opacity: 0, x: -10 }}
-              animate={showOutput ? { opacity: 1, x: 0 } : {}}
-              transition={{ delay: 0.2 }}
-            >
-              {service.output}
-            </motion.div>
-          </div>
-        </motion.div>
-
-        {/* Service Info Overlay */}
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-t from-[#0d1117] via-[#0d1117]/90 to-transparent flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-        >
-          <div className="flex items-center gap-3 mb-3">
-            <div
-              className="p-2 rounded-lg"
-              style={{ backgroundColor: `${service.color}20` }}
-            >
-              <Icon className="w-5 h-5" style={{ color: service.color }} />
+            <div className="flex-1 min-w-0">
+              <h3 className="text-xl font-bold text-white mb-1">{service.title}</h3>
+              <p className="text-[#8b949e] text-sm">{service.description}</p>
             </div>
-            <h3 className="text-xl font-bold text-white">{service.title}</h3>
           </div>
-          <p className="text-[#8b949e] text-sm">{service.description}</p>
-        </motion.div>
 
-        {/* Glow Effect */}
+          {/* Feature Tags */}
+          <div className="flex flex-wrap gap-2 mt-4">
+            {service.features.map((feature, i) => (
+              <motion.span
+                key={feature}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ delay: index * 0.15 + 0.3 + i * 0.05 }}
+                className="px-2.5 py-1 text-xs font-mono rounded-md border"
+                style={{
+                  color: service.color,
+                  borderColor: `${service.color}40`,
+                  backgroundColor: `${service.color}10`
+                }}
+              >
+                {feature}
+              </motion.span>
+            ))}
+          </div>
+        </div>
+
+        {/* Code Window */}
+        <div className="bg-[#0d1117]">
+          {/* Window Header */}
+          <div className="flex items-center justify-between px-4 py-2.5 bg-[#161b22] border-b border-[#30363d]">
+            <div className="flex items-center gap-2">
+              {/* Traffic Lights */}
+              <div className="flex items-center gap-1.5">
+                <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
+                <div className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
+                <div className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
+              </div>
+              <span className="text-xs font-mono text-[#8b949e] ml-2">{service.fileName}</span>
+            </div>
+
+            {/* Run Button */}
+            <motion.div
+              className="flex items-center gap-1.5 px-2 py-0.5 rounded text-xs font-mono"
+              style={{ color: service.color }}
+            >
+              {isRunning ? (
+                <>
+                  <motion.div
+                    className="w-1.5 h-1.5 rounded-full"
+                    style={{ backgroundColor: service.color }}
+                    animate={{ opacity: [1, 0.3, 1] }}
+                    transition={{ duration: 1, repeat: Infinity }}
+                  />
+                  <span className="hidden sm:inline">Running</span>
+                </>
+              ) : (
+                <>
+                  <Play className="w-3 h-3" />
+                  <span className="hidden sm:inline">Run</span>
+                </>
+              )}
+            </motion.div>
+          </div>
+
+          {/* Code Editor */}
+          <div className="p-4 min-h-[160px] sm:min-h-[180px]">
+            <TypingCode code={service.code} isVisible={isRunning} />
+          </div>
+
+          {/* Terminal Output */}
+          <motion.div
+            className="border-t border-[#30363d] bg-[#0d1117]"
+            initial={{ height: 0, opacity: 0 }}
+            animate={showOutput ? { height: 'auto', opacity: 1 } : {}}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="flex items-center gap-2 px-4 py-2 bg-[#161b22] border-b border-[#30363d]">
+              <Terminal className="w-3 h-3 text-[#8b949e]" />
+              <span className="text-xs font-mono text-[#8b949e]">Output</span>
+            </div>
+            <div className="px-4 py-3">
+              <motion.div
+                className="font-mono text-xs sm:text-sm"
+                style={{ color: service.color }}
+                initial={{ opacity: 0, x: -10 }}
+                animate={showOutput ? { opacity: 1, x: 0 } : {}}
+                transition={{ delay: 0.2 }}
+              >
+                {service.output}
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Subtle Border Glow on Hover */}
         <div
-          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-xl"
+          className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
           style={{
-            boxShadow: `inset 0 0 60px ${service.color}10, 0 0 40px ${service.color}10`
+            boxShadow: `inset 0 0 0 1px ${service.color}30`
           }}
         />
       </div>
@@ -328,41 +340,13 @@ export default function Services() {
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   return (
-    <section id="services" className="relative py-32 px-4 sm:px-6 lg:px-8 bg-[#0d1117] overflow-hidden">
-      {/* Animated Grid Background */}
-      <div className="absolute inset-0">
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `
-              linear-gradient(#58a6ff 1px, transparent 1px),
-              linear-gradient(90deg, #58a6ff 1px, transparent 1px)
-            `,
-            backgroundSize: '60px 60px',
-          }}
-        />
-        {/* Moving scan line */}
-        <motion.div
-          className="absolute left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#58a6ff]/50 to-transparent"
-          initial={{ top: '0%' }}
-          animate={{ top: '100%' }}
-          transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
-        />
-      </div>
+    <section id="services" className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#0d1117] overflow-hidden">
+      {/* Grid Background */}
+      <div className="absolute inset-0 grid-bg" />
 
       {/* Gradient Orbs */}
-      <motion.div
-        className="absolute top-20 left-1/4 w-[500px] h-[500px] rounded-full blur-[150px] opacity-20"
-        style={{ background: 'radial-gradient(circle, #58a6ff 0%, transparent 70%)' }}
-        animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
-        transition={{ duration: 8, repeat: Infinity }}
-      />
-      <motion.div
-        className="absolute bottom-20 right-1/4 w-[400px] h-[400px] rounded-full blur-[120px] opacity-20"
-        style={{ background: 'radial-gradient(circle, #7ee787 0%, transparent 70%)' }}
-        animate={{ scale: [1.2, 1, 1.2], opacity: [0.15, 0.25, 0.15] }}
-        transition={{ duration: 10, repeat: Infinity }}
-      />
+      <div className="absolute top-1/4 left-0 w-[400px] h-[400px] bg-[#58a6ff]/5 rounded-full blur-[120px]" />
+      <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] bg-[#7ee787]/5 rounded-full blur-[120px]" />
 
       <div ref={sectionRef} className="relative max-w-6xl mx-auto">
         {/* Header */}
@@ -370,52 +354,30 @@ export default function Services() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          className="text-center mb-16"
         >
-          {/* Terminal Command Badge */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ delay: 0.2 }}
-            className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-[#161b22] border border-[#30363d] mb-8"
-          >
-            <span className="flex items-center gap-2 text-sm font-mono">
-              <span className="text-[#7ee787]">$</span>
-              <motion.span
-                className="text-[#8b949e]"
-                initial={{ width: 0 }}
-                animate={isInView ? { width: 'auto' } : {}}
-                transition={{ delay: 0.5, duration: 0.5 }}
-              >
-                cat services.json
-              </motion.span>
-              <motion.span
-                className="w-2 h-4 bg-[#7ee787]"
-                animate={{ opacity: [1, 0] }}
-                transition={{ duration: 0.5, repeat: Infinity }}
-              />
-            </span>
-          </motion.div>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#161b22] border border-[#30363d] text-xs font-mono text-[#8b949e] mb-6">
+            <span className="text-[#7ee787]">$</span> cat services.json
+          </div>
 
-          <h2 className="font-unbounded text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+          <h2 className="font-unbounded text-4xl sm:text-5xl font-bold text-white mb-4">
             Наши услуги
           </h2>
-
-          <p className="text-[#8b949e] text-lg max-w-2xl mx-auto">
+          <p className="text-[#8b949e] max-w-2xl mx-auto">
             Полный спектр IT-услуг для развития вашего бизнеса
           </p>
 
           {/* Animated underline */}
           <motion.div
-            className="mt-8 h-1 mx-auto rounded-full bg-gradient-to-r from-[#58a6ff] via-[#7ee787] to-[#d2a8ff]"
+            className="mt-6 h-1 mx-auto rounded-full bg-gradient-to-r from-[#58a6ff] via-[#7ee787] to-[#d2a8ff]"
             initial={{ width: 0 }}
-            animate={isInView ? { width: 200 } : {}}
-            transition={{ delay: 0.4, duration: 0.8 }}
+            animate={isInView ? { width: 150 } : {}}
+            transition={{ delay: 0.3, duration: 0.8 }}
           />
         </motion.div>
 
         {/* Services Grid */}
-        <div className="grid gap-8 lg:grid-cols-2">
+        <div className="grid gap-6 lg:grid-cols-2">
           {services.map((service, index) => (
             <ServiceCard key={service.title} service={service} index={index} />
           ))}

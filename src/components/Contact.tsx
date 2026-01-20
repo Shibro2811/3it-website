@@ -168,15 +168,22 @@ export default function Contact() {
                     disabled={isSubmitting}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="flex items-center gap-2 px-6 py-3 bg-[#238636] hover:bg-[#2ea043] text-white font-semibold rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="group flex items-center gap-3 px-6 py-3 bg-[#7ee787]/10 text-[#7ee787] font-mono rounded-lg border border-[#7ee787]/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#7ee787]/20 hover:border-[#7ee787] hover:shadow-[0_0_20px_rgba(126,231,135,0.2)]"
                   >
                     {isSubmitting ? (
-                      <span className="font-mono">Отправка...</span>
+                      <span className="flex items-center gap-2">
+                        <motion.span
+                          className="w-2 h-2 rounded-full bg-[#7ee787]"
+                          animate={{ opacity: [1, 0.3, 1] }}
+                          transition={{ duration: 0.8, repeat: Infinity }}
+                        />
+                        <span>Отправка...</span>
+                      </span>
                     ) : (
-                      <>
+                      <span className="flex items-center gap-2">
                         <span>Отправить</span>
-                        <Send className="w-4 h-4" />
-                      </>
+                        <Send className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                      </span>
                     )}
                   </motion.button>
                 </div>
