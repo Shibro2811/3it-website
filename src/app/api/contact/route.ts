@@ -101,6 +101,42 @@ export async function POST(request: NextRequest): Promise<NextResponse<ApiRespon
       timestamp: new Date().toISOString(),
     });
 
+    // Send to Telegram
+    const botToken = process.env.TELEGRAM_BOT_TOKEN;
+    const chatId = process.env.TELEGRAM_CHAT_ID;
+
+    if (botToken && chatId) {
+      try {
+        const telegramMessage = `
+🔔 <b>Новое сообщение с сайта</b>
+
+👤 <b>Имя:</b> ${name}
+📧 <b>Email:</b> ${email}
+
+💬 <b>Сообщение:</b>
+${message}
+
+⏰ ${new Date().toLocaleString('ru-RU', { timeZone: 'Europe/Moscow' })}
+        `.trim();
+
+        const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: chatId,
+            text: telegramMessage,
+            parse_mode: 'HTML',
+          }),
+        });
+
+        if (!response.ok) {
+          console.error('Failed to send Telegram message:', await response.text());
+        }
+      } catch (telegramError) {
+        console.error('Telegram notification error:', telegramError);
+      }
+    }
+
     // Database storage (uncomment when Prisma is set up):
     // await prisma.contactSubmission.create({
     //   data: {

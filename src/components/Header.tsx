@@ -60,7 +60,7 @@ export default function Header() {
                   unoptimized
                   className="w-6 h-6 sm:w-7 sm:h-7"
                 />
-                <span className="font-mono text-base sm:text-lg font-bold text-[#58a6ff]">3IT</span>
+                <span className="font-unbounded text-base sm:text-lg font-bold text-[#7ee787]">3IT</span>
               </div>
             </Link>
 
@@ -88,12 +88,12 @@ export default function Header() {
               {isMobileMenuOpen ? (
                 <>
                   <X className="w-4 h-4" />
-                  <span className="text-xs">close</span>
+                  <span className="text-xs">закрыть</span>
                 </>
               ) : (
                 <>
                   <Menu className="w-4 h-4" />
-                  <span className="text-xs">menu</span>
+                  <span className="text-xs">меню</span>
                 </>
               )}
             </button>
@@ -178,7 +178,7 @@ export default function Header() {
                       unoptimized
                       className="w-5 h-5"
                     />
-                    <span className="font-mono text-xs text-[#58a6ff] font-bold">3IT</span>
+                    <span className="font-unbounded text-xs font-bold text-[#7ee787]">3IT</span>
                   </div>
                   <div className="font-mono text-xs text-[#8b949e]">
                     <span className="text-[#7ee787]">✓</span> Ready

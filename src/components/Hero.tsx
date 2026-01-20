@@ -308,7 +308,7 @@ export default function Hero() {
         >
           {[
             { value: '2025', label: 'Год основания' },
-            { value: '3+', label: 'Специалистов' },
+            { value: '10+', label: 'Специалистов' },
             { value: '∞', label: 'Возможностей' },
           ].map((stat, index) => (
             <motion.div
