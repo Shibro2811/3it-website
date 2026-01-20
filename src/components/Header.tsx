@@ -6,8 +6,9 @@ import { Menu, X, Terminal } from 'lucide-react';
 import Link from 'next/link';
 
 const navLinks = [
-  { href: '#about', label: 'О нас' },
   { href: '#services', label: 'Услуги' },
+  { href: '#pricing', label: 'Тарифы' },
+  { href: '#about', label: 'О нас' },
   { href: '#team', label: 'Команда' },
   { href: '#contacts', label: 'Контакты' },
 ];

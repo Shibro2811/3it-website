@@ -138,8 +138,9 @@ export default function Footer() {
 
             {/* Nav links */}
             {[
-              { id: 'about', text: 'О нас' },
               { id: 'services', text: 'Услуги' },
+              { id: 'pricing', text: 'Тарифы' },
+              { id: 'about', text: 'О нас' },
               { id: 'team', text: 'Команда' },
               { id: 'contacts', text: 'Контакты' },
             ].map((link, i) => (
