@@ -1,0 +1,288 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --dark-900: #0d1117;
+  --dark-800: #161b22;
+  --dark-700: #21262d;
+  --dark-600: #30363d;
+  --code-green: #7ee787;
+  --code-blue: #79c0ff;
+  --code-purple: #d2a8ff;
+  --code-orange: #ffa657;
+  --code-red: #ff7b72;
+  --code-cyan: #56d4dd;
+  --code-yellow: #e3b341;
+  --code-gray: #8b949e;
+  --accent-primary: #58a6ff;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--dark-900);
+    color: #c9d1d9;
+    overflow-x: hidden;
+    font-family: var(--font-inter), system-ui, sans-serif;
+    min-height: 100vh;
+  }
+}
+
+/* Font Classes */
+.font-inter {
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+.font-exo2 {
+  font-family: var(--font-exo2), system-ui, sans-serif;
+}
+
+.font-unbounded {
+  font-family: var(--font-unbounded), system-ui, sans-serif;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace;
+}
+
+/* Custom scrollbar - Developer style */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dark-800);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--dark-600);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--code-gray);
+}
+
+/* Mac Window Styles */
+.mac-window {
+  background: var(--dark-800);
+  border: 1px solid var(--dark-600);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.mac-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: var(--dark-700);
+  border-bottom: 1px solid var(--dark-600);
+}
+
+.mac-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.mac-dot-red {
+  background: #ff5f56;
+}
+
+.mac-dot-yellow {
+  background: #ffbd2e;
+}
+
+.mac-dot-green {
+  background: #27ca3f;
+}
+
+.mac-title {
+  flex: 1;
+  text-align: center;
+  font-size: 13px;
+  color: var(--code-gray);
+  font-family: 'SF Mono', monospace;
+}
+
+/* Code syntax colors */
+.code-keyword { color: var(--code-purple); }
+.code-string { color: var(--code-green); }
+.code-function { color: var(--code-blue); }
+.code-variable { color: var(--code-orange); }
+.code-comment { color: var(--code-gray); font-style: italic; }
+.code-tag { color: var(--code-red); }
+.code-attr { color: var(--code-cyan); }
+.code-number { color: var(--code-yellow); }
+
+/* Grid background */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(88, 166, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(88, 166, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.grid-bg-dense {
+  background-image:
+    linear-gradient(rgba(88, 166, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(88, 166, 255, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Glow effects */
+.glow-blue {
+  box-shadow: 0 0 20px rgba(88, 166, 255, 0.3);
+}
+
+.glow-green {
+  box-shadow: 0 0 20px rgba(126, 231, 135, 0.3);
+}
+
+/* Terminal cursor blink */
+.cursor-blink::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+  color: var(--code-green);
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* Code block styling */
+.code-block {
+  background: var(--dark-900);
+  border: 1px solid var(--dark-600);
+  border-radius: 8px;
+  padding: 16px;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-x: auto;
+}
+
+/* Line numbers */
+.line-number {
+  color: var(--dark-600);
+  user-select: none;
+  text-align: right;
+  padding-right: 16px;
+  min-width: 40px;
+}
+
+/* Focus styles */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+/* Card styles */
+.card-dev {
+  background: var(--dark-800);
+  border: 1px solid var(--dark-600);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.card-dev:hover {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 30px rgba(88, 166, 255, 0.1);
+}
+
+/* Button styles */
+.btn-dev {
+  background: var(--accent-primary);
+  color: var(--dark-900);
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-dev:hover {
+  background: #79c0ff;
+  box-shadow: 0 0 20px rgba(88, 166, 255, 0.4);
+}
+
+/* Input styles */
+.input-dev {
+  background: var(--dark-900);
+  border: 1px solid var(--dark-600);
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: #c9d1d9;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.input-dev:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
+  outline: none;
+}
+
+.input-dev::placeholder {
+  color: var(--code-gray);
+}
+
+/* Tag/badge styles */
+.tag-dev {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  background: rgba(88, 166, 255, 0.1);
+  border: 1px solid rgba(88, 166, 255, 0.3);
+  border-radius: 20px;
+  font-size: 12px;
+  color: var(--accent-primary);
+}
+
+/* Typing animation */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.typing-effect {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 2s steps(30) forwards;
+}
+
+/* Gradient text */
+.text-gradient {
+  background: linear-gradient(135deg, var(--code-blue), var(--code-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Section styling */
+section {
+  position: relative;
+  z-index: 1;
+}
+
+/* Selection color */
+::selection {
+  background: rgba(88, 166, 255, 0.3);
+  color: white;
+}
