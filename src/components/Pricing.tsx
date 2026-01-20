@@ -85,9 +85,9 @@ function PricingCard({ tier, index }: { readonly tier: PricingTier; readonly ind
           initial={{ opacity: 0, y: -10 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.3 }}
-          className="absolute -top-4 left-1/2 -translate-x-1/2 z-10"
+          className="absolute -top-3 sm:-top-4 left-1/2 -translate-x-1/2 z-10"
         >
-          <div className="px-4 py-1 rounded-full text-xs font-mono font-semibold bg-[#7ee787] text-[#0d1117]">
+          <div className="px-3 sm:px-4 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-mono font-semibold bg-[#7ee787] text-[#0d1117]">
             Популярный
           </div>
         </motion.div>
@@ -95,46 +95,46 @@ function PricingCard({ tier, index }: { readonly tier: PricingTier; readonly ind
 
       {/* macOS Window */}
       <div
-        className="relative bg-[#161b22] rounded-xl overflow-hidden border transition-all duration-500"
+        className="relative bg-[#161b22] rounded-lg sm:rounded-xl overflow-hidden border transition-all duration-500"
         style={{
           borderColor: tier.popular ? tier.color : '#30363d',
           boxShadow: tier.popular ? `0 0 40px ${tier.color}20` : 'none'
         }}
       >
         {/* Window Header */}
-        <div className="flex items-center gap-2 px-4 py-3 bg-[#21262d] border-b border-[#30363d]">
-          <div className="flex items-center gap-1.5">
-            <div className="w-3 h-3 rounded-full bg-[#ff5f57]" />
-            <div className="w-3 h-3 rounded-full bg-[#febc2e]" />
-            <div className="w-3 h-3 rounded-full bg-[#28c840]" />
+        <div className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-3 bg-[#21262d] border-b border-[#30363d]">
+          <div className="flex items-center gap-1 sm:gap-1.5">
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ff5f57]" />
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#febc2e]" />
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#28c840]" />
           </div>
-          <span className="ml-2 text-xs font-mono text-[#8b949e]">pricing/{tier.name.toLowerCase().replace(' ', '-')}.json</span>
+          <span className="ml-1.5 sm:ml-2 text-[10px] sm:text-xs font-mono text-[#8b949e] truncate">pricing/{tier.name.toLowerCase().replace(' ', '-')}.json</span>
         </div>
 
         {/* Content */}
-        <div className="p-6">
+        <div className="p-4 sm:p-6">
           {/* Icon & Name */}
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex items-center gap-2.5 sm:gap-3 mb-3 sm:mb-4">
             <div
-              className="p-2 rounded-lg"
+              className="p-1.5 sm:p-2 rounded-md sm:rounded-lg"
               style={{ backgroundColor: `${tier.color}20` }}
             >
-              <Icon className="w-5 h-5" style={{ color: tier.color }} />
+              <Icon className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: tier.color }} />
             </div>
-            <h3 className="text-xl font-bold text-white">{tier.name}</h3>
+            <h3 className="text-lg sm:text-xl font-bold text-white">{tier.name}</h3>
           </div>
 
           {/* Price as code */}
-          <div className="mb-4 p-4 bg-[#0d1117] rounded-lg border border-[#30363d]">
-            <div className="font-mono text-sm">
+          <div className="mb-3 sm:mb-4 p-3 sm:p-4 bg-[#0d1117] rounded-md sm:rounded-lg border border-[#30363d]">
+            <div className="font-mono text-xs sm:text-sm">
               <span className="text-[#8b949e]">{'{'}</span>
-              <div className="ml-4">
+              <div className="ml-3 sm:ml-4">
                 <span className="text-[#7ee787]">"price"</span>
                 <span className="text-[#8b949e]">: </span>
                 <span className="text-[#ffa657]">{tier.price}</span>
                 <span className="text-[#8b949e]">,</span>
               </div>
-              <div className="ml-4">
+              <div className="ml-3 sm:ml-4">
                 <span className="text-[#7ee787]">"currency"</span>
                 <span className="text-[#8b949e]">: </span>
                 <span className="text-[#a5d6ff]">"{tier.period}"</span>
@@ -144,19 +144,19 @@ function PricingCard({ tier, index }: { readonly tier: PricingTier; readonly ind
           </div>
 
           {/* Description */}
-          <p className="text-[#8b949e] text-sm mb-6">{tier.description}</p>
+          <p className="text-[#8b949e] text-xs sm:text-sm mb-4 sm:mb-6">{tier.description}</p>
 
           {/* Features */}
-          <ul className="space-y-3 mb-6">
+          <ul className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
             {tier.features.map((feature, i) => (
               <motion.li
                 key={feature}
                 initial={{ opacity: 0, x: -10 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ delay: 0.3 + i * 0.1 }}
-                className="flex items-center gap-3 text-sm"
+                className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm"
               >
-                <Check className="w-4 h-4 flex-shrink-0" style={{ color: tier.color }} />
+                <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" style={{ color: tier.color }} />
                 <span className="text-[#c9d1d9]">{feature}</span>
               </motion.li>
             ))}
@@ -164,10 +164,9 @@ function PricingCard({ tier, index }: { readonly tier: PricingTier; readonly ind
 
           {/* CTA Button */}
           <motion.button
-            whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             onClick={() => document.getElementById('contacts')?.scrollIntoView({ behavior: 'smooth' })}
-            className="group relative w-full py-3 rounded-lg font-mono overflow-hidden transition-all"
+            className="group relative w-full py-2.5 sm:py-3 rounded-md sm:rounded-lg font-mono text-sm overflow-hidden transition-all"
             style={{
               backgroundColor: tier.popular ? tier.color : 'transparent',
               color: tier.popular ? '#0d1117' : tier.color,
@@ -191,7 +190,7 @@ function PricingCard({ tier, index }: { readonly tier: PricingTier; readonly ind
 
         {/* Hover Glow */}
         <div
-          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-xl"
+          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-lg sm:rounded-xl"
           style={{ boxShadow: `inset 0 0 40px ${tier.color}10` }}
         />
       </div>
@@ -204,13 +203,13 @@ export default function Pricing() {
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   return (
-    <section id="pricing" className="relative py-32 px-4 sm:px-6 lg:px-8 bg-[#0d1117] overflow-hidden">
+    <section id="pricing" className="relative py-16 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#0d1117] overflow-hidden">
       {/* Grid Background */}
       <div className="absolute inset-0 grid-bg" />
 
       {/* Gradient Orbs */}
-      <div className="absolute top-1/4 right-0 w-[400px] h-[400px] bg-[#58a6ff]/5 rounded-full blur-[120px]" />
-      <div className="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-[#7ee787]/5 rounded-full blur-[120px]" />
+      <div className="absolute top-1/4 right-0 w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] bg-[#58a6ff]/5 rounded-full blur-[80px] sm:blur-[120px]" />
+      <div className="absolute bottom-1/4 left-0 w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] bg-[#7ee787]/5 rounded-full blur-[80px] sm:blur-[120px]" />
 
       <div ref={sectionRef} className="relative max-w-6xl mx-auto">
         {/* Header */}
@@ -218,22 +217,22 @@ export default function Pricing() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#161b22] border border-[#30363d] text-xs font-mono text-[#8b949e] mb-6">
+          <div className="inline-flex items-center gap-2 px-2.5 sm:px-3 py-1 rounded-full bg-[#161b22] border border-[#30363d] text-[10px] sm:text-xs font-mono text-[#8b949e] mb-4 sm:mb-6">
             <span className="text-[#7ee787]">$</span> cat pricing.json
           </div>
 
-          <h2 className="font-unbounded text-4xl sm:text-5xl font-bold text-white mb-4">
+          <h2 className="font-unbounded text-3xl sm:text-5xl font-bold text-white mb-3 sm:mb-4">
             Тарифы
           </h2>
-          <p className="text-[#8b949e] max-w-2xl mx-auto">
+          <p className="text-[#8b949e] text-sm sm:text-base max-w-2xl mx-auto px-4">
             Прозрачные цены на разработку веб-проектов
           </p>
 
           {/* Animated underline */}
           <motion.div
-            className="mt-6 h-1 mx-auto rounded-full bg-gradient-to-r from-[#58a6ff] via-[#7ee787] to-[#d2a8ff]"
+            className="mt-4 sm:mt-6 h-1 mx-auto rounded-full bg-gradient-to-r from-[#58a6ff] via-[#7ee787] to-[#d2a8ff]"
             initial={{ width: 0 }}
             animate={isInView ? { width: 150 } : {}}
             transition={{ delay: 0.3, duration: 0.8 }}
@@ -241,7 +240,7 @@ export default function Pricing() {
         </motion.div>
 
         {/* Pricing Grid */}
-        <div className="grid gap-6 lg:grid-cols-3">
+        <div className="grid gap-4 sm:gap-6 lg:grid-cols-3">
           {pricingTiers.map((tier, index) => (
             <PricingCard key={tier.name} tier={tier} index={index} />
           ))}
@@ -252,15 +251,15 @@ export default function Pricing() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.6 }}
-          className="mt-12 text-center"
+          className="mt-8 sm:mt-12 text-center"
         >
-          <div className="inline-flex items-center gap-3 px-6 py-3 bg-[#161b22] border border-[#30363d] rounded-xl">
-            <span className="text-[#8b949e] text-sm font-mono">
+          <div className="inline-flex flex-col sm:flex-row items-center gap-2 sm:gap-3 px-4 sm:px-6 py-3 bg-[#161b22] border border-[#30363d] rounded-lg sm:rounded-xl">
+            <span className="text-[#8b949e] text-xs sm:text-sm font-mono">
               // Нужен индивидуальный расчёт?
             </span>
             <button
               onClick={() => document.getElementById('contacts')?.scrollIntoView({ behavior: 'smooth' })}
-              className="group flex items-center gap-1.5 text-[#58a6ff] text-sm font-mono hover:text-[#79c0ff] transition-colors"
+              className="group flex items-center gap-1.5 text-[#58a6ff] text-xs sm:text-sm font-mono hover:text-[#79c0ff] transition-colors"
             >
               <span>Свяжитесь с нами</span>
               <span className="group-hover:translate-x-0.5 transition-transform">→</span>

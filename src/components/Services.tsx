@@ -215,34 +215,34 @@ function ServiceCard({ service, index }: { readonly service: Service; readonly i
       transition={{ duration: 0.6, delay: index * 0.15 }}
       className="group"
     >
-      <div className="relative bg-[#161b22] rounded-xl overflow-hidden border border-[#30363d] hover:border-[#484f58] transition-all duration-300">
+      <div className="relative bg-[#161b22] rounded-lg sm:rounded-xl overflow-hidden border border-[#30363d] hover:border-[#484f58] transition-all duration-300">
         {/* Service Header - Always Visible */}
-        <div className="p-5 sm:p-6 border-b border-[#30363d]">
-          <div className="flex items-start gap-4">
+        <div className="p-4 sm:p-6 border-b border-[#30363d]">
+          <div className="flex items-start gap-3 sm:gap-4">
             <motion.div
               initial={{ scale: 0 }}
               animate={isInView ? { scale: 1 } : {}}
               transition={{ delay: index * 0.15 + 0.2, type: "spring" }}
-              className="p-3 rounded-xl flex-shrink-0"
+              className="p-2.5 sm:p-3 rounded-lg sm:rounded-xl flex-shrink-0"
               style={{ backgroundColor: `${service.color}15` }}
             >
-              <Icon className="w-6 h-6" style={{ color: service.color }} />
+              <Icon className="w-5 h-5 sm:w-6 sm:h-6" style={{ color: service.color }} />
             </motion.div>
             <div className="flex-1 min-w-0">
-              <h3 className="text-xl font-bold text-white mb-1">{service.title}</h3>
-              <p className="text-[#8b949e] text-sm">{service.description}</p>
+              <h3 className="text-lg sm:text-xl font-bold text-white mb-1">{service.title}</h3>
+              <p className="text-[#8b949e] text-xs sm:text-sm">{service.description}</p>
             </div>
           </div>
 
           {/* Feature Tags */}
-          <div className="flex flex-wrap gap-2 mt-4">
+          <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-3 sm:mt-4">
             {service.features.map((feature, i) => (
               <motion.span
                 key={feature}
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ delay: index * 0.15 + 0.3 + i * 0.05 }}
-                className="px-2.5 py-1 text-xs font-mono rounded-md border"
+                className="px-2 sm:px-2.5 py-0.5 sm:py-1 text-[10px] sm:text-xs font-mono rounded-md border"
                 style={{
                   color: service.color,
                   borderColor: `${service.color}40`,
@@ -340,13 +340,13 @@ export default function Services() {
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   return (
-    <section id="services" className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#0d1117] overflow-hidden">
+    <section id="services" className="relative py-16 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#0d1117] overflow-hidden">
       {/* Grid Background */}
       <div className="absolute inset-0 grid-bg" />
 
       {/* Gradient Orbs */}
-      <div className="absolute top-1/4 left-0 w-[400px] h-[400px] bg-[#58a6ff]/5 rounded-full blur-[120px]" />
-      <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] bg-[#7ee787]/5 rounded-full blur-[120px]" />
+      <div className="absolute top-1/4 left-0 w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] bg-[#58a6ff]/5 rounded-full blur-[80px] sm:blur-[120px]" />
+      <div className="absolute bottom-1/4 right-0 w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] bg-[#7ee787]/5 rounded-full blur-[80px] sm:blur-[120px]" />
 
       <div ref={sectionRef} className="relative max-w-6xl mx-auto">
         {/* Header */}
@@ -354,16 +354,16 @@ export default function Services() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#161b22] border border-[#30363d] text-xs font-mono text-[#8b949e] mb-6">
+          <div className="inline-flex items-center gap-2 px-2.5 sm:px-3 py-1 rounded-full bg-[#161b22] border border-[#30363d] text-[10px] sm:text-xs font-mono text-[#8b949e] mb-4 sm:mb-6">
             <span className="text-[#7ee787]">$</span> cat services.json
           </div>
 
-          <h2 className="font-unbounded text-4xl sm:text-5xl font-bold text-white mb-4">
+          <h2 className="font-unbounded text-3xl sm:text-5xl font-bold text-white mb-3 sm:mb-4">
             Наши услуги
           </h2>
-          <p className="text-[#8b949e] max-w-2xl mx-auto">
+          <p className="text-[#8b949e] text-sm sm:text-base max-w-2xl mx-auto px-4">
             Полный спектр IT-услуг для развития вашего бизнеса
           </p>
 
@@ -377,7 +377,7 @@ export default function Services() {
         </motion.div>
 
         {/* Services Grid */}
-        <div className="grid gap-6 lg:grid-cols-2">
+        <div className="grid gap-4 sm:gap-6 lg:grid-cols-2">
           {services.map((service, index) => (
             <ServiceCard key={service.title} service={service} index={index} />
           ))}

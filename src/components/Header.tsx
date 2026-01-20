@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Terminal } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 
 const navLinks = [
@@ -47,34 +47,47 @@ export default function Header() {
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            {/* Logo */}
-            <Link href="/" className="flex items-center gap-2">
-              <Terminal className="w-5 h-5 text-[#7ee787]" />
-              <span className="font-mono text-xl font-bold text-[#58a6ff]">
-                3IT
-              </span>
+            {/* Logo - styled like a terminal prompt */}
+            <Link href="/" className="flex items-center gap-2 group">
+              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#161b22]/80 border border-[#30363d] group-hover:border-[#58a6ff]/50 transition-colors">
+                <span className="text-[#7ee787] font-mono text-sm">~</span>
+                <span className="text-[#8b949e] font-mono text-sm">/</span>
+                <span className="font-mono text-lg font-bold text-[#58a6ff]">3IT</span>
+              </div>
             </Link>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-1">
-              {navLinks.map((link) => (
-                <button
-                  key={link.href}
-                  onClick={() => scrollToSection(link.href)}
-                  className="px-4 py-2 text-sm text-[#8b949e] hover:text-white hover:bg-[#21262d] rounded-lg transition-all"
-                >
-                  {link.label}
-                </button>
-              ))}
+            {/* Desktop Navigation - styled like editor tabs */}
+            <nav className="hidden md:flex items-center">
+              <div className="flex items-center bg-[#161b22]/60 rounded-lg border border-[#30363d]/50 p-1">
+                {navLinks.map((link) => (
+                  <button
+                    key={link.href}
+                    onClick={() => scrollToSection(link.href)}
+                    className="px-3 py-1.5 text-xs font-mono text-[#8b949e] hover:text-white hover:bg-[#21262d] rounded-md transition-all"
+                  >
+                    {link.label}
+                  </button>
+                ))}
+              </div>
             </nav>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-[#8b949e] hover:text-white hover:bg-[#21262d] rounded-lg transition-colors"
+              className="md:hidden flex items-center gap-2 px-3 py-1.5 text-[#8b949e] hover:text-white bg-[#161b22]/80 border border-[#30363d] hover:border-[#58a6ff]/50 rounded-md transition-all font-mono text-sm"
               aria-label="Меню"
             >
-              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {isMobileMenuOpen ? (
+                <>
+                  <X className="w-4 h-4" />
+                  <span className="text-xs">close</span>
+                </>
+              ) : (
+                <>
+                  <Menu className="w-4 h-4" />
+                  <span className="text-xs">menu</span>
+                </>
+              )}
             </button>
           </div>
         </div>
@@ -96,35 +109,59 @@ export default function Header() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="fixed top-0 right-0 bottom-0 z-50 w-64 bg-[#161b22] border-l border-[#30363d] md:hidden"
+              className="fixed top-0 right-0 bottom-0 z-50 w-72 bg-[#0d1117] border-l border-[#30363d] md:hidden"
             >
               {/* Mobile Menu Header */}
-              <div className="flex items-center justify-between p-4 border-b border-[#30363d]">
-                <span className="font-mono text-sm text-[#8b949e]">menu.tsx</span>
+              <div className="flex items-center justify-between px-4 py-3 bg-[#161b22] border-b border-[#30363d]">
+                <div className="flex items-center gap-1.5">
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
+                </div>
+                <span className="font-mono text-xs text-[#8b949e]">navigation.tsx</span>
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="p-1 text-[#8b949e] hover:text-white"
+                  className="p-1 text-[#8b949e] hover:text-white transition-colors"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-4 h-4" />
                 </button>
               </div>
 
               {/* Mobile Menu Links */}
               <div className="p-4">
-                <nav className="flex flex-col gap-2">
+                <div className="font-mono text-xs text-[#8b949e] mb-3">
+                  <span className="text-[#ff7b72]">const</span>{' '}
+                  <span className="text-[#c9d1d9]">links</span>{' '}
+                  <span className="text-[#8b949e]">=</span>{' '}
+                  <span className="text-[#8b949e]">[</span>
+                </div>
+                <nav className="flex flex-col gap-1 ml-4">
                   {navLinks.map((link, index) => (
                     <motion.button
                       key={link.href}
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
+                      transition={{ delay: index * 0.05 }}
                       onClick={() => scrollToSection(link.href)}
-                      className="text-left px-4 py-3 text-[#8b949e] hover:text-white hover:bg-[#21262d] rounded-lg transition-all font-mono text-sm"
+                      className="text-left px-3 py-2.5 text-[#8b949e] hover:text-[#58a6ff] hover:bg-[#161b22] rounded-md transition-all font-mono text-sm group"
                     >
-                      <span className="text-[#7ee787]">→</span> {link.label}
+                      <span className="text-[#a5d6ff]">"</span>
+                      <span className="group-hover:text-[#58a6ff]">{link.label}</span>
+                      <span className="text-[#a5d6ff]">"</span>
+                      <span className="text-[#8b949e]">,</span>
                     </motion.button>
                   ))}
                 </nav>
+                <div className="font-mono text-xs text-[#8b949e] mt-3 ml-0">
+                  <span className="text-[#8b949e]">];</span>
+                </div>
+              </div>
+
+              {/* Bottom section */}
+              <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-[#30363d]">
+                <div className="font-mono text-xs text-[#8b949e]">
+                  <span className="text-[#7ee787]">✓</span> Ready
+                </div>
               </div>
             </motion.div>
           </>

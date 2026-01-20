@@ -33,13 +33,13 @@ function CopyButton({ text }: { readonly text: string }) {
   return (
     <button
       onClick={handleCopy}
-      className="p-1.5 rounded-md hover:bg-[#21262d] transition-colors group"
+      className="p-1 sm:p-1.5 rounded-md hover:bg-[#21262d] transition-colors group"
       title="Копировать"
     >
       {copied ? (
-        <Check className="w-3.5 h-3.5 text-[#7ee787]" />
+        <Check className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#7ee787]" />
       ) : (
-        <Copy className="w-3.5 h-3.5 text-[#8b949e] group-hover:text-white" />
+        <Copy className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#8b949e] group-hover:text-white" />
       )}
     </button>
   );
@@ -50,7 +50,7 @@ export default function Requisites() {
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   return (
-    <section id="requisites" className="relative py-24 px-4 sm:px-6 lg:px-8 bg-[#0d1117] overflow-hidden">
+    <section id="requisites" className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#0d1117] overflow-hidden">
       {/* Grid Background */}
       <div className="absolute inset-0 grid-bg opacity-30" />
 
@@ -60,22 +60,22 @@ export default function Requisites() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#161b22] border border-[#30363d] text-xs font-mono text-[#8b949e] mb-6">
+          <div className="inline-flex items-center gap-2 px-2.5 sm:px-3 py-1 rounded-full bg-[#161b22] border border-[#30363d] text-[10px] sm:text-xs font-mono text-[#8b949e] mb-4 sm:mb-6">
             <span className="text-[#7ee787]">$</span> cat company.json
           </div>
 
-          <h2 className="font-unbounded text-3xl sm:text-4xl font-bold text-white mb-4">
+          <h2 className="font-unbounded text-2xl sm:text-4xl font-bold text-white mb-3 sm:mb-4">
             Реквизиты
           </h2>
-          <p className="text-[#8b949e] max-w-xl mx-auto">
+          <p className="text-[#8b949e] text-sm sm:text-base max-w-xl mx-auto px-4">
             Юридическая информация о компании
           </p>
 
           {/* Animated underline */}
           <motion.div
-            className="mt-6 h-1 mx-auto rounded-full bg-gradient-to-r from-[#58a6ff] via-[#7ee787] to-[#d2a8ff]"
+            className="mt-4 sm:mt-6 h-1 mx-auto rounded-full bg-gradient-to-r from-[#58a6ff] via-[#7ee787] to-[#d2a8ff]"
             initial={{ width: 0 }}
             animate={isInView ? { width: 120 } : {}}
             transition={{ delay: 0.3, duration: 0.8 }}
@@ -90,24 +90,24 @@ export default function Requisites() {
           className="relative"
         >
           {/* macOS Window */}
-          <div className="bg-[#161b22] rounded-xl overflow-hidden border border-[#30363d]">
+          <div className="bg-[#161b22] rounded-lg sm:rounded-xl overflow-hidden border border-[#30363d]">
             {/* Window Header */}
-            <div className="flex items-center justify-between px-4 py-3 bg-[#21262d] border-b border-[#30363d]">
-              <div className="flex items-center gap-2">
-                <div className="flex items-center gap-1.5">
-                  <div className="w-3 h-3 rounded-full bg-[#ff5f57]" />
-                  <div className="w-3 h-3 rounded-full bg-[#febc2e]" />
-                  <div className="w-3 h-3 rounded-full bg-[#28c840]" />
+            <div className="flex items-center justify-between px-3 sm:px-4 py-2 sm:py-3 bg-[#21262d] border-b border-[#30363d]">
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <div className="flex items-center gap-1 sm:gap-1.5">
+                  <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ff5f57]" />
+                  <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#febc2e]" />
+                  <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#28c840]" />
                 </div>
-                <span className="ml-2 text-xs font-mono text-[#8b949e]">company.json</span>
+                <span className="ml-1.5 sm:ml-2 text-[10px] sm:text-xs font-mono text-[#8b949e]">company.json</span>
               </div>
               <div className="flex items-center gap-1">
-                <FileJson className="w-4 h-4 text-[#8b949e]" />
+                <FileJson className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#8b949e]" />
               </div>
             </div>
 
             {/* JSON Content */}
-            <div className="p-6 font-mono text-sm overflow-x-auto">
+            <div className="p-3 sm:p-6 font-mono text-[11px] sm:text-sm overflow-x-auto">
               {/* Opening brace */}
               <motion.div
                 initial={{ opacity: 0 }}
@@ -115,7 +115,7 @@ export default function Requisites() {
                 transition={{ delay: 0.3 }}
                 className="flex items-center"
               >
-                <span className="text-[#30363d] select-none w-8">1</span>
+                <span className="text-[#30363d] select-none w-5 sm:w-8">1</span>
                 <span className="text-[#8b949e]">{'{'}</span>
               </motion.div>
 
@@ -128,8 +128,8 @@ export default function Requisites() {
                   transition={{ delay: 0.4 + index * 0.1 }}
                   className="flex items-start group"
                 >
-                  <span className="text-[#30363d] select-none w-8 flex-shrink-0">{index + 2}</span>
-                  <div className="flex-1 ml-4 flex items-start justify-between gap-2">
+                  <span className="text-[#30363d] select-none w-5 sm:w-8 flex-shrink-0">{index + 2}</span>
+                  <div className="flex-1 ml-2 sm:ml-4 flex items-start justify-between gap-1 sm:gap-2">
                     <div className="flex-1 min-w-0">
                       <span className="text-[#7ee787]">"{item.key}"</span>
                       <span className="text-[#8b949e]">: </span>
@@ -140,7 +140,7 @@ export default function Requisites() {
                       )}
                       {index < requisites.length - 1 && <span className="text-[#8b949e]">,</span>}
                     </div>
-                    <div className="opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0">
+                    <div className="opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0">
                       <CopyButton text={item.value} />
                     </div>
                   </div>
@@ -154,7 +154,7 @@ export default function Requisites() {
                 transition={{ delay: 0.9 }}
                 className="flex items-center"
               >
-                <span className="text-[#30363d] select-none w-8">{requisites.length + 2}</span>
+                <span className="text-[#30363d] select-none w-5 sm:w-8">{requisites.length + 2}</span>
                 <span className="text-[#8b949e]">{'}'}</span>
               </motion.div>
             </div>
@@ -169,9 +169,9 @@ export default function Requisites() {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ delay: 1 }}
-          className="mt-6 text-center text-xs text-[#8b949e] font-mono"
+          className="mt-4 sm:mt-6 text-center text-[10px] sm:text-xs text-[#8b949e] font-mono"
         >
-          // Наведите на строку, чтобы скопировать значение
+          // Нажмите на иконку, чтобы скопировать значение
         </motion.p>
       </div>
     </section>

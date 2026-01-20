@@ -47,12 +47,12 @@ export default function Contact() {
   };
 
   return (
-    <section id="contacts" className="relative py-24 px-4 sm:px-6 lg:px-8 bg-[#0d1117]">
+    <section id="contacts" className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#0d1117]">
       {/* Grid Background */}
       <div className="absolute inset-0 grid-bg" />
 
       {/* Gradient */}
-      <div className="absolute top-0 right-1/4 w-[600px] h-[400px] bg-[#58a6ff]/5 rounded-full blur-[120px]" />
+      <div className="absolute top-0 right-1/4 w-[300px] sm:w-[600px] h-[200px] sm:h-[400px] bg-[#58a6ff]/5 rounded-full blur-[80px] sm:blur-[120px]" />
 
       <div className="relative max-w-3xl mx-auto">
         {/* Header */}
@@ -60,17 +60,17 @@ export default function Contact() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#161b22] border border-[#30363d] text-xs font-mono text-[#8b949e] mb-6">
+          <div className="inline-flex items-center gap-2 px-2.5 sm:px-3 py-1 rounded-full bg-[#161b22] border border-[#30363d] text-[10px] sm:text-xs font-mono text-[#8b949e] mb-4 sm:mb-6">
             <Terminal className="w-3 h-3 text-[#7ee787]" />
             ./contact.sh
           </div>
 
-          <h2 className="font-unbounded text-4xl sm:text-5xl font-bold text-white mb-4">
+          <h2 className="font-unbounded text-3xl sm:text-5xl font-bold text-white mb-3 sm:mb-4">
             Связаться с нами
           </h2>
-          <p className="text-[#8b949e]">
+          <p className="text-[#8b949e] text-sm sm:text-base px-4">
             Расскажите о вашем проекте, и мы свяжемся с вами
           </p>
         </motion.div>
@@ -79,15 +79,15 @@ export default function Contact() {
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="text-center py-16"
+            className="text-center py-12 sm:py-16"
           >
-            <div className="inline-flex p-4 rounded-full bg-[#238636]/20 mb-6">
-              <CheckCircle className="w-12 h-12 text-[#7ee787]" />
+            <div className="inline-flex p-3 sm:p-4 rounded-full bg-[#238636]/20 mb-4 sm:mb-6">
+              <CheckCircle className="w-10 h-10 sm:w-12 sm:h-12 text-[#7ee787]" />
             </div>
-            <h3 className="text-2xl font-semibold text-white mb-2">
+            <h3 className="text-xl sm:text-2xl font-semibold text-white mb-2">
               Сообщение отправлено!
             </h3>
-            <p className="text-[#8b949e] font-mono text-sm">
+            <p className="text-[#8b949e] font-mono text-xs sm:text-sm">
               $ echo &quot;Мы свяжемся с вами в ближайшее время&quot;
             </p>
           </motion.div>
@@ -99,18 +99,18 @@ export default function Contact() {
             transition={{ delay: 0.2 }}
           >
             {/* Mac Window Form */}
-            <div className="bg-[#161b22] border border-[#30363d] rounded-xl overflow-hidden">
-              <div className="flex items-center gap-2 px-4 py-3 bg-[#21262d] border-b border-[#30363d]">
-                <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
-                <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
-                <div className="w-3 h-3 rounded-full bg-[#27ca3f]" />
-                <span className="ml-2 text-xs font-mono text-[#8b949e]">new_message.sh</span>
+            <div className="bg-[#161b22] border border-[#30363d] rounded-lg sm:rounded-xl overflow-hidden">
+              <div className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-3 bg-[#21262d] border-b border-[#30363d]">
+                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ff5f56]" />
+                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ffbd2e]" />
+                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#27ca3f]" />
+                <span className="ml-1.5 sm:ml-2 text-[10px] sm:text-xs font-mono text-[#8b949e]">new_message.sh</span>
               </div>
 
-              <form onSubmit={handleSubmit} className="p-6 space-y-6">
-                <div className="grid sm:grid-cols-2 gap-6">
+              <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-4 sm:space-y-6">
+                <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-mono text-[#8b949e] mb-2">
+                    <label htmlFor="name" className="block text-xs sm:text-sm font-mono text-[#8b949e] mb-1.5 sm:mb-2">
                       <span className="text-[#ff7b72]">const</span> name =
                     </label>
                     <input
@@ -120,12 +120,12 @@ export default function Contact() {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-lg bg-[#0d1117] border border-[#30363d] text-white font-mono placeholder-[#484f58] focus:outline-none focus:border-[#58a6ff] transition-colors"
+                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-md sm:rounded-lg bg-[#0d1117] border border-[#30363d] text-white text-sm sm:text-base font-mono placeholder-[#484f58] focus:outline-none focus:border-[#58a6ff] transition-colors"
                       placeholder="&quot;Ваше имя&quot;"
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-mono text-[#8b949e] mb-2">
+                    <label htmlFor="email" className="block text-xs sm:text-sm font-mono text-[#8b949e] mb-1.5 sm:mb-2">
                       <span className="text-[#ff7b72]">const</span> email =
                     </label>
                     <input
@@ -135,14 +135,14 @@ export default function Contact() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-lg bg-[#0d1117] border border-[#30363d] text-white font-mono placeholder-[#484f58] focus:outline-none focus:border-[#58a6ff] transition-colors"
+                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-md sm:rounded-lg bg-[#0d1117] border border-[#30363d] text-white text-sm sm:text-base font-mono placeholder-[#484f58] focus:outline-none focus:border-[#58a6ff] transition-colors"
                       placeholder="&quot;email@example.com&quot;"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-mono text-[#8b949e] mb-2">
+                  <label htmlFor="message" className="block text-xs sm:text-sm font-mono text-[#8b949e] mb-1.5 sm:mb-2">
                     <span className="text-[#ff7b72]">const</span> message =
                   </label>
                   <textarea
@@ -151,29 +151,28 @@ export default function Contact() {
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    rows={5}
-                    className="w-full px-4 py-3 rounded-lg bg-[#0d1117] border border-[#30363d] text-white font-mono placeholder-[#484f58] focus:outline-none focus:border-[#58a6ff] transition-colors resize-none"
+                    rows={4}
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-md sm:rounded-lg bg-[#0d1117] border border-[#30363d] text-white text-sm sm:text-base font-mono placeholder-[#484f58] focus:outline-none focus:border-[#58a6ff] transition-colors resize-none"
                     placeholder="&quot;Расскажите о вашем проекте...&quot;"
                   />
                 </div>
 
-                <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-4">
-                  <div className="flex items-center gap-3 text-[#8b949e]">
-                    <MapPin className="w-4 h-4" />
-                    <span className="text-sm font-mono">Ставропольский край, Россия</span>
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6 pt-2 sm:pt-4">
+                  <div className="flex items-center gap-2 sm:gap-3 text-[#8b949e]">
+                    <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                    <span className="text-xs sm:text-sm font-mono">Ставропольский край, Россия</span>
                   </div>
 
                   <motion.button
                     type="submit"
                     disabled={isSubmitting}
-                    whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="group flex items-center gap-3 px-6 py-3 bg-[#7ee787]/10 text-[#7ee787] font-mono rounded-lg border border-[#7ee787]/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#7ee787]/20 hover:border-[#7ee787] hover:shadow-[0_0_20px_rgba(126,231,135,0.2)]"
+                    className="w-full sm:w-auto group flex items-center justify-center gap-2 sm:gap-3 px-5 sm:px-6 py-2.5 sm:py-3 bg-[#7ee787]/10 text-[#7ee787] font-mono text-sm rounded-md sm:rounded-lg border border-[#7ee787]/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#7ee787]/20 hover:border-[#7ee787] hover:shadow-[0_0_20px_rgba(126,231,135,0.2)]"
                   >
                     {isSubmitting ? (
                       <span className="flex items-center gap-2">
                         <motion.span
-                          className="w-2 h-2 rounded-full bg-[#7ee787]"
+                          className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#7ee787]"
                           animate={{ opacity: [1, 0.3, 1] }}
                           transition={{ duration: 0.8, repeat: Infinity }}
                         />
@@ -182,7 +181,7 @@ export default function Contact() {
                     ) : (
                       <span className="flex items-center gap-2">
                         <span>Отправить</span>
-                        <Send className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                        <Send className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-0.5 transition-transform" />
                       </span>
                     )}
                   </motion.button>

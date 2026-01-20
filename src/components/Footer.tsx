@@ -9,7 +9,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative py-12 px-4 sm:px-6 lg:px-8 bg-[#0d1117] border-t border-[#21262d]">
+    <footer className="relative py-8 sm:py-12 px-4 sm:px-6 lg:px-8 bg-[#0d1117] border-t border-[#21262d]">
       {/* Grid Background */}
       <div className="absolute inset-0 grid-bg opacity-50" />
 
@@ -19,21 +19,21 @@ export default function Footer() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-[#161b22] border border-[#30363d] rounded-xl overflow-hidden"
+          className="bg-[#161b22] border border-[#30363d] rounded-lg sm:rounded-xl overflow-hidden"
         >
           {/* Mac Header */}
-          <div className="flex items-center gap-2 px-4 py-3 bg-[#21262d] border-b border-[#30363d]">
-            <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
-            <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
-            <div className="w-3 h-3 rounded-full bg-[#27ca3f]" />
-            <span className="ml-2 text-xs font-mono text-[#8b949e]">footer.html</span>
+          <div className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-3 bg-[#21262d] border-b border-[#30363d]">
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ff5f56]" />
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ffbd2e]" />
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#27ca3f]" />
+            <span className="ml-1.5 sm:ml-2 text-[10px] sm:text-xs font-mono text-[#8b949e]">footer.html</span>
           </div>
 
           {/* Code Content */}
-          <div className="p-6 font-mono text-xs sm:text-sm leading-loose overflow-x-auto">
+          <div className="p-3 sm:p-6 font-mono text-[10px] sm:text-sm leading-loose overflow-x-auto">
             {/* Opening footer tag */}
             <div className="flex">
-              <span className="text-[#30363d] select-none w-6 sm:w-8">1</span>
+              <span className="text-[#30363d] select-none w-5 sm:w-8">1</span>
               <span>
                 <span className="text-[#8b949e]">&lt;</span>
                 <span className="text-[#7ee787]">footer</span>
@@ -43,8 +43,8 @@ export default function Footer() {
 
             {/* Logo */}
             <div className="flex">
-              <span className="text-[#30363d] select-none w-6 sm:w-8">2</span>
-              <span className="ml-4">
+              <span className="text-[#30363d] select-none w-5 sm:w-8">2</span>
+              <span className="ml-2 sm:ml-4">
                 <span className="text-[#8b949e]">&lt;</span>
                 <span className="text-[#7ee787]">h1</span>
                 <span className="text-[#79c0ff]"> class</span>
@@ -60,8 +60,8 @@ export default function Footer() {
 
             {/* Nav opening */}
             <div className="flex">
-              <span className="text-[#30363d] select-none w-6 sm:w-8">3</span>
-              <span className="ml-4">
+              <span className="text-[#30363d] select-none w-5 sm:w-8">3</span>
+              <span className="ml-2 sm:ml-4">
                 <span className="text-[#8b949e]">&lt;</span>
                 <span className="text-[#7ee787]">nav</span>
                 <span className="text-[#8b949e]">&gt;</span>
@@ -78,8 +78,8 @@ export default function Footer() {
               { id: 'requisites', text: 'Реквизиты' },
             ].map((link, i) => (
               <div key={link.id} className="flex">
-                <span className="text-[#30363d] select-none w-6 sm:w-8">{4 + i}</span>
-                <span className="ml-8">
+                <span className="text-[#30363d] select-none w-5 sm:w-8">{4 + i}</span>
+                <span className="ml-4 sm:ml-8">
                   <span className="text-[#8b949e]">&lt;</span>
                   <span className="text-[#7ee787]">a</span>
                   <span className="text-[#79c0ff]"> href</span>
@@ -101,8 +101,8 @@ export default function Footer() {
 
             {/* Close nav */}
             <div className="flex">
-              <span className="text-[#30363d] select-none w-6 sm:w-8">10</span>
-              <span className="ml-4">
+              <span className="text-[#30363d] select-none w-5 sm:w-8">10</span>
+              <span className="ml-2 sm:ml-4">
                 <span className="text-[#8b949e]">&lt;/</span>
                 <span className="text-[#7ee787]">nav</span>
                 <span className="text-[#8b949e]">&gt;</span>
@@ -111,15 +111,15 @@ export default function Footer() {
 
             {/* Copyright comment */}
             <div className="flex">
-              <span className="text-[#30363d] select-none w-6 sm:w-8">11</span>
-              <span className="ml-4">
-                <span className="text-[#8b949e]">&lt;!-- © 2025 ООО «ТРИАЙТИ». Все права защищены. --&gt;</span>
+              <span className="text-[#30363d] select-none w-5 sm:w-8">11</span>
+              <span className="ml-2 sm:ml-4">
+                <span className="text-[#8b949e]">&lt;!-- © 2025 ООО «ТРИАЙТИ» --&gt;</span>
               </span>
             </div>
 
             {/* Closing footer tag */}
             <div className="flex">
-              <span className="text-[#30363d] select-none w-6 sm:w-8">12</span>
+              <span className="text-[#30363d] select-none w-5 sm:w-8">12</span>
               <span>
                 <span className="text-[#8b949e]">&lt;/</span>
                 <span className="text-[#7ee787]">footer</span>
@@ -130,9 +130,9 @@ export default function Footer() {
         </motion.div>
 
         {/* Bottom bar */}
-        <div className="mt-6 flex items-center justify-center gap-4 text-xs font-mono text-[#8b949e]">
-          <span className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#7ee787]" />
+        <div className="mt-4 sm:mt-6 flex items-center justify-center gap-3 sm:gap-4 text-[10px] sm:text-xs font-mono text-[#8b949e]">
+          <span className="flex items-center gap-1.5 sm:gap-2">
+            <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#7ee787]" />
             Онлайн
           </span>
           <span>|</span>
