@@ -136,8 +136,9 @@ export default function Footer() {
             <Image
               src="/images/logo-3it.png"
               alt="3IT Logo"
-              width={20}
-              height={20}
+              width={40}
+              height={40}
+              quality={100}
               className="w-4 h-4 sm:w-5 sm:h-5"
             />
             <span className="text-[#58a6ff] font-bold">3IT</span>

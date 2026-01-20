@@ -54,8 +54,9 @@ export default function Header() {
                 <Image
                   src="/images/logo-3it.png"
                   alt="3IT Logo"
-                  width={28}
-                  height={28}
+                  width={56}
+                  height={56}
+                  quality={100}
                   className="w-6 h-6 sm:w-7 sm:h-7"
                 />
                 <span className="font-mono text-base sm:text-lg font-bold text-[#58a6ff]">3IT</span>
@@ -170,8 +171,9 @@ export default function Header() {
                     <Image
                       src="/images/logo-3it.png"
                       alt="3IT Logo"
-                      width={20}
-                      height={20}
+                      width={40}
+                      height={40}
+                      quality={100}
                       className="w-5 h-5"
                     />
                     <span className="font-mono text-xs text-[#58a6ff] font-bold">3IT</span>
