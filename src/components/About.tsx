@@ -2,7 +2,7 @@
 
 import { motion, useInView } from 'framer-motion';
 import { GitBranch, Calendar, Users, Zap } from 'lucide-react';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 const stats = [
   { icon: Calendar, value: '2025', label: 'Год основания', color: '#58a6ff' },
@@ -21,6 +21,19 @@ const activityGrid = [
   [2, 3, 3, 3, 2, 3, 3],
 ];
 
+// Activity data for tooltips
+const activityLabels = [
+  ['Нет задач', '2 проекта', '5 задач', '3 задачи', 'Нет задач', '1 проект', '4 задачи'],
+  ['2 задачи', '6 задач', '12 задач', '7 задач', '3 задачи', '5 задач', '10 задач'],
+  ['4 задачи', '15 задач', '8 задач', '13 задач', '6 задач', '11 задач', '7 задач'],
+  ['1 проект', '5 задач', '14 задач', '16 задач', '18 задач', '9 задач', '12 задач'],
+  ['3 задачи', '11 задач', '6 задач', '14 задач', '17 задач', '15 задач', '8 задач'],
+  ['9 задач', '7 задач', '13 задач', '5 задач', '16 задач', '19 задач', '14 задач'],
+  ['4 задачи', '10 задач', '12 задач', '15 задач', '6 задач', '13 задач', '11 задач'],
+];
+
+const weekLabels = ['6 нед.', '5 нед.', '4 нед.', '3 нед.', '2 нед.', '1 нед.', 'Эта неделя'];
+
 function getActivityColor(level: number) {
   switch (level) {
     case 0: return '#21262d';
@@ -31,9 +44,20 @@ function getActivityColor(level: number) {
   }
 }
 
+function getActivityLevel(level: number) {
+  switch (level) {
+    case 0: return 'Нет активности';
+    case 1: return 'Низкая активность';
+    case 2: return 'Средняя активность';
+    case 3: return 'Высокая активность';
+    default: return 'Нет активности';
+  }
+}
+
 export default function About() {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const [hoveredSquare, setHoveredSquare] = useState<{ row: number; col: number } | null>(null);
 
   return (
     <section id="about" className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#0d1117]">
@@ -173,18 +197,48 @@ export default function About() {
                   </div>
 
                   {/* Activity grid */}
-                  <div className="flex flex-col gap-0.5 sm:gap-1">
+                  <div className="flex flex-col gap-0.5 sm:gap-1 relative">
                     {activityGrid.map((row, rowIndex) => (
                       <div key={rowIndex} className="flex gap-0.5 sm:gap-1">
                         {row.map((level, colIndex) => (
-                          <motion.div
-                            key={colIndex}
-                            initial={{ opacity: 0, scale: 0 }}
-                            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                            transition={{ delay: 0.6 + rowIndex * 0.05 + colIndex * 0.02 }}
-                            className="w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-sm"
-                            style={{ backgroundColor: getActivityColor(level) }}
-                          />
+                          <div key={colIndex} className="relative group/activity">
+                            <motion.div
+                              initial={{ opacity: 0, scale: 0 }}
+                              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                              transition={{ delay: 0.6 + rowIndex * 0.05 + colIndex * 0.02 }}
+                              className="w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-sm cursor-pointer transition-all hover:scale-125 hover:ring-1 hover:ring-[#7ee787]"
+                              style={{ backgroundColor: getActivityColor(level) }}
+                              onMouseEnter={() => setHoveredSquare({ row: rowIndex, col: colIndex })}
+                              onMouseLeave={() => setHoveredSquare(null)}
+                            />
+
+                            {/* Tooltip */}
+                            {hoveredSquare?.row === rowIndex && hoveredSquare?.col === colIndex && (
+                              <motion.div
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 pointer-events-none z-50"
+                              >
+                                <div className="bg-[#0d1117] border border-[#30363d] rounded-lg px-3 py-2 shadow-2xl min-w-max">
+                                  <div className="text-[10px] sm:text-xs font-mono">
+                                    <div className="text-[#7ee787] font-semibold mb-0.5">
+                                      {activityLabels[rowIndex][colIndex]}
+                                    </div>
+                                    <div className="text-[#8b949e] text-[9px] sm:text-[10px]">
+                                      {getActivityLevel(level)}
+                                    </div>
+                                    <div className="text-[#58a6ff] text-[9px] sm:text-[10px] mt-0.5">
+                                      {weekLabels[colIndex]}
+                                    </div>
+                                  </div>
+                                  {/* Tooltip arrow */}
+                                  <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-px">
+                                    <div className="border-4 border-transparent border-t-[#30363d]" />
+                                  </div>
+                                </div>
+                              </motion.div>
+                            )}
+                          </div>
                         ))}
                       </div>
                     ))}

@@ -20,12 +20,12 @@ const terminalCommandsMobile = [
 const terminalCommandsDesktop = [
   { type: 'command', text: 'npx create-3it-project@latest my-app' },
   { type: 'output', text: '' },
-  { type: 'output', text: '  ████████╗██████╗ ██╗████████╗' },
-  { type: 'output', text: '  ╚══██╔══╝██╔══██╗██║╚══██╔══╝' },
-  { type: 'output', text: '     ██║   ██████╔╝██║   ██║' },
-  { type: 'output', text: '     ██║   ██╔══██╗██║   ██║' },
-  { type: 'output', text: '     ██║   ██║  ██║██║   ██║' },
-  { type: 'output', text: '     ╚═╝   ╚═╝  ╚═╝╚═╝   ╚═╝' },
+  { type: 'output', text: '  ██████╗ ██╗████████╗' },
+  { type: 'output', text: '  ╚════██╗██║╚══██╔══╝' },
+  { type: 'output', text: '   █████╔╝██║   ██║   ' },
+  { type: 'output', text: '   ╚═══██╗██║   ██║   ' },
+  { type: 'output', text: '  ██████╔╝██║   ██║   ' },
+  { type: 'output', text: '  ╚═════╝ ╚═╝   ╚═╝   ' },
   { type: 'output', text: '' },
   { type: 'success', text: '✓ Создаём цифровое будущее...' },
   { type: 'success', text: '✓ Подключаем передовые технологии...' },
@@ -74,13 +74,13 @@ function TypingTerminal({ isMobile }: { readonly isMobile: boolean }) {
               return newLines;
             });
             setCurrentChar(prev => prev + 1);
-          }, 15);
+          }, 8);
           return () => clearTimeout(timer);
         } else {
           const timer = setTimeout(() => {
             setCurrentLine(prev => prev + 1);
             setCurrentChar(0);
-          }, 300);
+          }, 150);
           return () => clearTimeout(timer);
         }
       } else {
@@ -92,10 +92,10 @@ function TypingTerminal({ isMobile }: { readonly isMobile: boolean }) {
           });
           setCurrentLine(prev => prev + 1);
           setCurrentChar(0);
-        }, line.type === 'success' ? 150 : 40);
+        }, line.type === 'success' ? 250 : line.type === 'output' ? 150 : 20);
         return () => clearTimeout(timer);
       }
-    }, 400);
+    }, 200);
 
     return () => clearTimeout(startDelay);
   }, [isInView, currentLine, currentChar, terminalCommands]);

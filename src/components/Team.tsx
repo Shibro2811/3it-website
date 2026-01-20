@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Github } from 'lucide-react';
 import Image from 'next/image';
@@ -39,12 +40,24 @@ const teamMembers: readonly TeamMember[] = [
     username: 'anvar',
     email: 'aarov@threeit.ru',
     image: '/images/aarov.jpg',
-    description: 'Свой путь в индустрии я начинал в компаниях Связной и Ак Барс Банк, после чего перешел в Тинькофф на позицию мобильного разработчика. Накопленный в крупном финтехе опыт помог мне осознать, что я хочу применять свои навыки для решения задач в реальном секторе экономики. Именно это желание трансформировать традиционные процессы с помощью технологий привело меня в агротех-стартап, где инновации создают осязаемый и масштабный результат.\n\nВне работы я большой поклонник футбола и стараюсь не пропускать важные матчи.',
-    previousWork: ['Тинькофф', 'Связной']
+    description: 'Свой путь в индустрии я начинал как мобильный разработчик в Тинькофф. Накопленный в крупном финтехе опыт помог мне осознать, что я хочу применять свои навыки для решения задач в реальном секторе экономики. Именно это желание трансформировать традиционные процессы с помощью технологий привело меня в агротех-стартап, где инновации создают осязаемый и масштабный результат.\n\nВне работы я большой поклонник футбола и стараюсь не пропускать важные матчи.',
+    previousWork: ['Тинькофф']
   },
 ];
 
+const activityData = [
+  { commits: 28, level: 'Очень активен', week: 'Эта неделя' },
+  { commits: 24, level: 'Очень активен', week: '1 нед. назад' },
+  { commits: 19, level: 'Активен', week: '2 нед. назад' },
+  { commits: 15, level: 'Активен', week: '3 нед. назад' },
+  { commits: 12, level: 'Умеренно', week: '4 нед. назад' },
+  { commits: 0, level: 'Нет активности', week: '5 нед. назад' },
+  { commits: 0, level: 'Нет активности', week: '6 нед. назад' },
+];
+
 function TeamCard({ member, index }: { readonly member: TeamMember; readonly index: number }) {
+  const [hoveredSquare, setHoveredSquare] = useState<number | null>(null);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -116,16 +129,48 @@ function TeamCard({ member, index }: { readonly member: TeamMember; readonly ind
           )}
 
           {/* Contribution Graph Style */}
-          <div className="mt-auto pt-5 sm:pt-6 flex justify-center gap-1">
-            {Array.from({ length: 7 }).map((_, i) => (
-              <div
-                key={i}
-                className="w-2 h-2 sm:w-3 sm:h-3 rounded-sm"
-                style={{
-                  backgroundColor: i < 5 ? `rgba(126, 231, 135, ${0.2 + i * 0.15})` : '#21262d',
-                }}
-              />
-            ))}
+          <div className="mt-auto pt-5 sm:pt-6">
+            <div className="flex justify-center gap-1 relative">
+              {Array.from({ length: 7 }).map((_, i) => (
+                <div key={i} className="relative group/square">
+                  <div
+                    className="w-2 h-2 sm:w-3 sm:h-3 rounded-sm cursor-pointer transition-all hover:scale-125 hover:ring-1 hover:ring-[#7ee787]"
+                    style={{
+                      backgroundColor: i < 5 ? `rgba(126, 231, 135, ${0.2 + i * 0.15})` : '#21262d',
+                    }}
+                    onMouseEnter={() => setHoveredSquare(i)}
+                    onMouseLeave={() => setHoveredSquare(null)}
+                  />
+
+                  {/* Tooltip */}
+                  {hoveredSquare === i && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 pointer-events-none z-10"
+                    >
+                      <div className="bg-[#0d1117] border border-[#30363d] rounded-lg px-3 py-2 shadow-xl min-w-max">
+                        <div className="text-[10px] sm:text-xs font-mono">
+                          <div className="text-[#7ee787] font-semibold mb-0.5">
+                            {activityData[i].commits} коммит{activityData[i].commits === 1 ? '' : activityData[i].commits < 5 ? 'а' : 'ов'}
+                          </div>
+                          <div className="text-[#8b949e] text-[9px] sm:text-[10px]">
+                            {activityData[i].level}
+                          </div>
+                          <div className="text-[#58a6ff] text-[9px] sm:text-[10px] mt-0.5">
+                            {activityData[i].week}
+                          </div>
+                        </div>
+                        {/* Tooltip arrow */}
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-px">
+                          <div className="border-4 border-transparent border-t-[#30363d]" />
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
