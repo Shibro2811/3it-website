@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export default function Footer() {
   const scrollToSection = (id: string) => {
@@ -129,8 +130,19 @@ export default function Footer() {
           </div>
         </motion.div>
 
-        {/* Bottom bar */}
+        {/* Bottom bar with logo */}
         <div className="mt-4 sm:mt-6 flex items-center justify-center gap-3 sm:gap-4 text-[10px] sm:text-xs font-mono text-[#8b949e]">
+          <div className="flex items-center gap-2">
+            <Image
+              src="/images/logo-3it.png"
+              alt="3IT Logo"
+              width={20}
+              height={20}
+              className="w-4 h-4 sm:w-5 sm:h-5"
+            />
+            <span className="text-[#58a6ff] font-bold">3IT</span>
+          </div>
+          <span>|</span>
           <span className="flex items-center gap-1.5 sm:gap-2">
             <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#7ee787]" />
             Онлайн

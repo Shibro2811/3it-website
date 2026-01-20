@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const navLinks = [
   { href: '#services', label: 'Услуги' },
@@ -47,12 +48,17 @@ export default function Header() {
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            {/* Logo - styled like a terminal prompt */}
+            {/* Logo */}
             <Link href="/" className="flex items-center gap-2 group">
-              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#161b22]/80 border border-[#30363d] group-hover:border-[#58a6ff]/50 transition-colors">
-                <span className="text-[#7ee787] font-mono text-sm">~</span>
-                <span className="text-[#8b949e] font-mono text-sm">/</span>
-                <span className="font-mono text-lg font-bold text-[#58a6ff]">3IT</span>
+              <div className="flex items-center gap-2 px-2 sm:px-3 py-1.5 rounded-md bg-[#161b22]/80 border border-[#30363d] group-hover:border-[#58a6ff]/50 transition-colors">
+                <Image
+                  src="/images/logo-3it.png"
+                  alt="3IT Logo"
+                  width={28}
+                  height={28}
+                  className="w-6 h-6 sm:w-7 sm:h-7"
+                />
+                <span className="font-mono text-base sm:text-lg font-bold text-[#58a6ff]">3IT</span>
               </div>
             </Link>
 
@@ -157,10 +163,22 @@ export default function Header() {
                 </div>
               </div>
 
-              {/* Bottom section */}
+              {/* Bottom section with logo */}
               <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-[#30363d]">
-                <div className="font-mono text-xs text-[#8b949e]">
-                  <span className="text-[#7ee787]">✓</span> Ready
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Image
+                      src="/images/logo-3it.png"
+                      alt="3IT Logo"
+                      width={20}
+                      height={20}
+                      className="w-5 h-5"
+                    />
+                    <span className="font-mono text-xs text-[#58a6ff] font-bold">3IT</span>
+                  </div>
+                  <div className="font-mono text-xs text-[#8b949e]">
+                    <span className="text-[#7ee787]">✓</span> Ready
+                  </div>
                 </div>
               </div>
             </motion.div>
