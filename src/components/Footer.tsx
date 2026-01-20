@@ -13,7 +13,7 @@ export default function Footer() {
       {/* Grid Background */}
       <div className="absolute inset-0 grid-bg opacity-50" />
 
-      <div className="relative max-w-4xl mx-auto">
+      <div className="relative max-w-5xl mx-auto">
         {/* HTML Code Style Footer */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -26,14 +26,14 @@ export default function Footer() {
             <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
             <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
             <div className="w-3 h-3 rounded-full bg-[#27ca3f]" />
-            <span className="ml-2 text-xs font-mono text-[#8b949e]">footer.html</span>
+            <span className="ml-2 text-xs font-mono text-[#8b949e]">requisites.html</span>
           </div>
 
           {/* Code Content */}
-          <div className="p-6 font-mono text-sm leading-loose">
+          <div className="p-6 font-mono text-xs sm:text-sm leading-loose overflow-x-auto">
             {/* Opening footer tag */}
             <div className="flex">
-              <span className="text-[#30363d] select-none w-8">1</span>
+              <span className="text-[#30363d] select-none w-6 sm:w-8">1</span>
               <span>
                 <span className="text-[#8b949e]">&lt;</span>
                 <span className="text-[#7ee787]">footer</span>
@@ -41,22 +41,22 @@ export default function Footer() {
               </span>
             </div>
 
-            {/* Company div */}
+            {/* Company section */}
             <div className="flex">
-              <span className="text-[#30363d] select-none w-8">2</span>
+              <span className="text-[#30363d] select-none w-6 sm:w-8">2</span>
               <span className="ml-4">
                 <span className="text-[#8b949e]">&lt;</span>
-                <span className="text-[#7ee787]">div</span>
-                <span className="text-[#79c0ff]"> class</span>
+                <span className="text-[#7ee787]">section</span>
+                <span className="text-[#79c0ff]"> id</span>
                 <span className="text-[#8b949e]">=</span>
-                <span className="text-[#a5d6ff]">&quot;company&quot;</span>
+                <span className="text-[#a5d6ff]">&quot;requisites&quot;</span>
                 <span className="text-[#8b949e]">&gt;</span>
               </span>
             </div>
 
             {/* Logo */}
             <div className="flex">
-              <span className="text-[#30363d] select-none w-8">3</span>
+              <span className="text-[#30363d] select-none w-6 sm:w-8">3</span>
               <span className="ml-8">
                 <span className="text-[#8b949e]">&lt;</span>
                 <span className="text-[#7ee787]">h1</span>
@@ -70,10 +70,13 @@ export default function Footer() {
 
             {/* Company name */}
             <div className="flex">
-              <span className="text-[#30363d] select-none w-8">4</span>
+              <span className="text-[#30363d] select-none w-6 sm:w-8">4</span>
               <span className="ml-8">
                 <span className="text-[#8b949e]">&lt;</span>
                 <span className="text-[#7ee787]">p</span>
+                <span className="text-[#79c0ff]"> class</span>
+                <span className="text-[#8b949e]">=</span>
+                <span className="text-[#a5d6ff]">&quot;name&quot;</span>
                 <span className="text-[#8b949e]">&gt;</span>
                 <span className="text-[#c9d1d9]">ООО «ТРИАЙТИ»</span>
                 <span className="text-[#8b949e]">&lt;/</span>
@@ -84,51 +87,104 @@ export default function Footer() {
 
             {/* INN */}
             <div className="flex">
-              <span className="text-[#30363d] select-none w-8">5</span>
+              <span className="text-[#30363d] select-none w-6 sm:w-8">5</span>
               <span className="ml-8">
                 <span className="text-[#8b949e]">&lt;</span>
-                <span className="text-[#7ee787]">span</span>
+                <span className="text-[#7ee787]">data</span>
                 <span className="text-[#79c0ff]"> id</span>
                 <span className="text-[#8b949e]">=</span>
                 <span className="text-[#a5d6ff]">&quot;inn&quot;</span>
                 <span className="text-[#8b949e]">&gt;</span>
-                <span className="text-[#c9d1d9]">2630054680</span>
+                <span className="text-[#ffa657]">2630054680</span>
                 <span className="text-[#8b949e]">&lt;/</span>
-                <span className="text-[#7ee787]">span</span>
+                <span className="text-[#7ee787]">data</span>
+                <span className="text-[#8b949e]">&gt;</span>
+              </span>
+            </div>
+
+            {/* KPP */}
+            <div className="flex">
+              <span className="text-[#30363d] select-none w-6 sm:w-8">6</span>
+              <span className="ml-8">
+                <span className="text-[#8b949e]">&lt;</span>
+                <span className="text-[#7ee787]">data</span>
+                <span className="text-[#79c0ff]"> id</span>
+                <span className="text-[#8b949e]">=</span>
+                <span className="text-[#a5d6ff]">&quot;kpp&quot;</span>
+                <span className="text-[#8b949e]">&gt;</span>
+                <span className="text-[#ffa657]">263001001</span>
+                <span className="text-[#8b949e]">&lt;/</span>
+                <span className="text-[#7ee787]">data</span>
                 <span className="text-[#8b949e]">&gt;</span>
               </span>
             </div>
 
             {/* OGRN */}
             <div className="flex">
-              <span className="text-[#30363d] select-none w-8">6</span>
+              <span className="text-[#30363d] select-none w-6 sm:w-8">7</span>
               <span className="ml-8">
                 <span className="text-[#8b949e]">&lt;</span>
-                <span className="text-[#7ee787]">span</span>
+                <span className="text-[#7ee787]">data</span>
                 <span className="text-[#79c0ff]"> id</span>
                 <span className="text-[#8b949e]">=</span>
                 <span className="text-[#a5d6ff]">&quot;ogrn&quot;</span>
                 <span className="text-[#8b949e]">&gt;</span>
-                <span className="text-[#c9d1d9]">1252600011355</span>
+                <span className="text-[#ffa657]">1252600011355</span>
                 <span className="text-[#8b949e]">&lt;/</span>
-                <span className="text-[#7ee787]">span</span>
+                <span className="text-[#7ee787]">data</span>
                 <span className="text-[#8b949e]">&gt;</span>
               </span>
             </div>
 
-            {/* Close company div */}
+            {/* Address */}
             <div className="flex">
-              <span className="text-[#30363d] select-none w-8">7</span>
+              <span className="text-[#30363d] select-none w-6 sm:w-8">8</span>
+              <span className="ml-8">
+                <span className="text-[#8b949e]">&lt;</span>
+                <span className="text-[#7ee787]">address</span>
+                <span className="text-[#8b949e]">&gt;</span>
+              </span>
+            </div>
+            <div className="flex">
+              <span className="text-[#30363d] select-none w-6 sm:w-8">9</span>
+              <span className="ml-12 text-[#c9d1d9] break-all">
+                357204, Ставропольский край,
+              </span>
+            </div>
+            <div className="flex">
+              <span className="text-[#30363d] select-none w-6 sm:w-8">10</span>
+              <span className="ml-12 text-[#c9d1d9] break-all">
+                Минераловодский р-н, х Красный Пахарь,
+              </span>
+            </div>
+            <div className="flex">
+              <span className="text-[#30363d] select-none w-6 sm:w-8">11</span>
+              <span className="ml-12 text-[#c9d1d9] break-all">
+                Автомобильная ул, стр. 31
+              </span>
+            </div>
+            <div className="flex">
+              <span className="text-[#30363d] select-none w-6 sm:w-8">12</span>
+              <span className="ml-8">
+                <span className="text-[#8b949e]">&lt;/</span>
+                <span className="text-[#7ee787]">address</span>
+                <span className="text-[#8b949e]">&gt;</span>
+              </span>
+            </div>
+
+            {/* Close section */}
+            <div className="flex">
+              <span className="text-[#30363d] select-none w-6 sm:w-8">13</span>
               <span className="ml-4">
                 <span className="text-[#8b949e]">&lt;/</span>
-                <span className="text-[#7ee787]">div</span>
+                <span className="text-[#7ee787]">section</span>
                 <span className="text-[#8b949e]">&gt;</span>
               </span>
             </div>
 
             {/* Nav */}
             <div className="flex">
-              <span className="text-[#30363d] select-none w-8">8</span>
+              <span className="text-[#30363d] select-none w-6 sm:w-8">14</span>
               <span className="ml-4">
                 <span className="text-[#8b949e]">&lt;</span>
                 <span className="text-[#7ee787]">nav</span>
@@ -145,7 +201,7 @@ export default function Footer() {
               { id: 'contacts', text: 'Контакты' },
             ].map((link, i) => (
               <div key={link.id} className="flex">
-                <span className="text-[#30363d] select-none w-8">{9 + i}</span>
+                <span className="text-[#30363d] select-none w-6 sm:w-8">{15 + i}</span>
                 <span className="ml-8">
                   <span className="text-[#8b949e]">&lt;</span>
                   <span className="text-[#7ee787]">a</span>
@@ -168,7 +224,7 @@ export default function Footer() {
 
             {/* Close nav */}
             <div className="flex">
-              <span className="text-[#30363d] select-none w-8">13</span>
+              <span className="text-[#30363d] select-none w-6 sm:w-8">20</span>
               <span className="ml-4">
                 <span className="text-[#8b949e]">&lt;/</span>
                 <span className="text-[#7ee787]">nav</span>
@@ -178,17 +234,15 @@ export default function Footer() {
 
             {/* Copyright comment */}
             <div className="flex">
-              <span className="text-[#30363d] select-none w-8">14</span>
+              <span className="text-[#30363d] select-none w-6 sm:w-8">21</span>
               <span className="ml-4">
-                <span className="text-[#8b949e]">&lt;!-- </span>
-                <span className="text-[#8b949e]">© 2025 3IT. Все права защищены. </span>
-                <span className="text-[#8b949e]">--&gt;</span>
+                <span className="text-[#8b949e]">&lt;!-- © 2025 ООО «ТРИАЙТИ». Все права защищены. --&gt;</span>
               </span>
             </div>
 
             {/* Closing footer tag */}
             <div className="flex">
-              <span className="text-[#30363d] select-none w-8">15</span>
+              <span className="text-[#30363d] select-none w-6 sm:w-8">22</span>
               <span>
                 <span className="text-[#8b949e]">&lt;/</span>
                 <span className="text-[#7ee787]">footer</span>
@@ -205,7 +259,7 @@ export default function Footer() {
             Онлайн
           </span>
           <span>|</span>
-          <span>© 2025 3IT</span>
+          <span>© 2025 ООО «ТРИАЙТИ»</span>
         </div>
       </div>
     </footer>
