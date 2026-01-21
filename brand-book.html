@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3IT Brand Book</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Unbounded:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0d1117;
+      --bg-secondary: #161b22;
+      --bg-tertiary: #21262d;
+      --border: #30363d;
+      --cyan: #58a6ff;
+      --green: #7ee787;
+      --purple: #d2a8ff;
+      --orange: #ffa657;
+      --red: #ff7b72;
+      --text-primary: #c9d1d9;
+      --text-secondary: #8b949e;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(13, 17, 23, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 32px;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-logo {
+      font-family: 'Unbounded', sans-serif;
+      font-weight: 700;
+      font-size: 24px;
+      color: var(--green);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--cyan);
+    }
+
+    /* Main Content */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 32px 64px;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 64px;
+    }
+
+    .hero h1 {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 64px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, var(--green), var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 20px;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 80px;
+      padding-top: 40px;
+    }
+
+    h2 {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 32px;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    h2::before {
+      content: '';
+      width: 4px;
+      height: 36px;
+      background: var(--cyan);
+      border-radius: 2px;
+    }
+
+    h3 {
+      font-size: 24px;
+      font-weight: 600;
+      margin: 32px 0 16px;
+      color: var(--text-primary);
+    }
+
+    h4 {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 24px 0 12px;
+      color: var(--cyan);
+    }
+
+    p {
+      margin-bottom: 16px;
+      color: var(--text-secondary);
+    }
+
+    /* Cards */
+    .card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    .card:hover {
+      border-color: var(--cyan);
+      box-shadow: 0 0 30px rgba(88, 166, 255, 0.1);
+    }
+
+    /* Color Swatches */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+
+    .color-swatch {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .color-preview {
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+    }
+
+    .color-info {
+      padding: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .color-info strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--text-primary);
+    }
+
+    .color-info span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      background: var(--bg-secondary);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      background: var(--bg-tertiary);
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    td {
+      color: var(--text-secondary);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Code Blocks */
+    pre {
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      overflow-x: auto;
+      margin: 16px 0;
+    }
+
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: var(--green);
+    }
+
+    pre code {
+      color: var(--text-primary);
+    }
+
+    .code-comment {
+      color: var(--text-secondary);
+    }
+
+    .code-property {
+      color: var(--cyan);
+    }
+
+    .code-value {
+      color: var(--green);
+    }
+
+    /* Typography Demo */
+    .type-demo {
+      margin: 24px 0;
+    }
+
+    .type-sample {
+      padding: 24px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 16px;
+    }
+
+    .type-sample-unbounded {
+      font-family: 'Unbounded', sans-serif;
+    }
+
+    .type-sample-inter {
+      font-family: 'Inter', sans-serif;
+    }
+
+    .type-sample-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .type-label {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: 8px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Components Demo */
+    .component-demo {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin: 24px 0;
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: var(--bg-primary);
+      padding: 12px 32px;
+      border-radius: 8px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.1);
+      box-shadow: 0 0 20px rgba(126, 231, 135, 0.4);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--cyan);
+      padding: 12px 32px;
+      border-radius: 8px;
+      font-weight: 600;
+      border: 1px solid rgba(88, 166, 255, 0.3);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(88, 166, 255, 0.1);
+      border-color: var(--cyan);
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(88, 166, 255, 0.1);
+      border: 1px solid rgba(88, 166, 255, 0.3);
+      border-radius: 4px;
+      padding: 4px 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--cyan);
+    }
+
+    .badge-green {
+      background: rgba(126, 231, 135, 0.1);
+      border-color: rgba(126, 231, 135, 0.3);
+      color: var(--green);
+    }
+
+    .badge-purple {
+      background: rgba(210, 168, 255, 0.1);
+      border-color: rgba(210, 168, 255, 0.3);
+      color: var(--purple);
+    }
+
+    /* macOS Window */
+    .macos-window {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 24px 0;
+    }
+
+    .macos-header {
+      background: var(--bg-tertiary);
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .traffic-light {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .traffic-red { background: #ff5f56; }
+    .traffic-yellow { background: #ffbd2e; }
+    .traffic-green { background: #27ca3f; }
+
+    .macos-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-left: 8px;
+    }
+
+    .macos-content {
+      padding: 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      background: var(--bg-primary);
+    }
+
+    /* Form Elements */
+    .input-demo {
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      width: 100%;
+      max-width: 300px;
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    .input-demo:focus {
+      border-color: var(--cyan);
+      box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
+    }
+
+    .input-demo::placeholder {
+      color: var(--text-secondary);
+    }
+
+    /* Lists */
+    ul, ol {
+      margin: 16px 0 16px 24px;
+      color: var(--text-secondary);
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    li strong {
+      color: var(--text-primary);
+    }
+
+    /* Do's and Don'ts */
+    .do-dont-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin: 24px 0;
+    }
+
+    .do-box, .dont-box {
+      padding: 24px;
+      border-radius: 12px;
+    }
+
+    .do-box {
+      background: rgba(126, 231, 135, 0.05);
+      border: 1px solid rgba(126, 231, 135, 0.2);
+    }
+
+    .dont-box {
+      background: rgba(255, 123, 114, 0.05);
+      border: 1px solid rgba(255, 123, 114, 0.2);
+    }
+
+    .do-box h4 {
+      color: var(--green);
+    }
+
+    .dont-box h4 {
+      color: var(--red);
+    }
+
+    /* Animation Demo */
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(168, 85, 247, 0.5); }
+      50% { box-shadow: 0 0 30px rgba(6, 182, 212, 0.6); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .animation-demo {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin: 24px 0;
+    }
+
+    .anim-box {
+      width: 80px;
+      height: 80px;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .anim-glow {
+      animation: glow 2s infinite alternate;
+    }
+
+    .anim-float {
+      animation: float 3s infinite ease-in-out;
+    }
+
+    /* Social Media Sizes */
+    .size-demo {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      align-items: flex-end;
+      margin: 24px 0;
+    }
+
+    .size-box {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: var(--text-secondary);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Quick Reference */
+    .quick-ref {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+    }
+
+    .quick-ref-item {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .quick-ref-item h5 {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .quick-ref-item code {
+      display: block;
+      margin-top: 4px;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+
+    /* Download Button */
+    .download-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green);
+      color: var(--bg-primary);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-left: auto;
+    }
+
+    .download-btn:hover {
+      filter: brightness(1.1);
+      box-shadow: 0 0 20px rgba(126, 231, 135, 0.4);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .download-btn {
+        margin-left: 0;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      h2 {
+        font-size: 28px;
+      }
+
+      .color-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Print Styles for PDF */
+    @media print {
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+      }
+
+      body {
+        background: var(--bg-primary) !important;
+      }
+
+      .nav {
+        display: none !important;
+      }
+
+      .container {
+        padding-top: 32px;
+      }
+
+      .hero {
+        padding: 40px 0;
+        page-break-after: avoid;
+      }
+
+      section {
+        page-break-inside: avoid;
+        margin-bottom: 40px;
+      }
+
+      h2 {
+        page-break-after: avoid;
+      }
+
+      table, .card, .macos-window, .color-grid {
+        page-break-inside: avoid;
+      }
+
+      .download-btn {
+        display: none !important;
+      }
+
+      .anim-glow, .anim-float {
+        animation: none !important;
+      }
+
+      a {
+        text-decoration: none !important;
+      }
+
+      .color-preview, .color-swatch, .card, .macos-window,
+      .macos-header, .macos-content, table, th, td,
+      .do-box, .dont-box, .quick-ref-item, .type-sample,
+      .btn-primary, .btn-secondary, .badge, .input-demo {
+        background-color: inherit !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-logo">3IT</div>
+    <div class="nav-links">
+      <a href="#brand-identity">Identity</a>
+      <a href="#color-system">Colors</a>
+      <a href="#typography">Typography</a>
+      <a href="#logo-usage">Logo</a>
+      <a href="#visual-elements">Visual</a>
+      <a href="#components">Components</a>
+      <a href="#animation">Animation</a>
+      <a href="#social-media">Social</a>
+      <a href="#dos-donts">Do's & Don'ts</a>
+    </div>
+    <button class="download-btn" onclick="downloadPDF()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+        <polyline points="7 10 12 15 17 10"/>
+        <line x1="12" y1="15" x2="12" y2="3"/>
+      </svg>
+      <span id="btn-text">Download PDF</span>
+    </button>
+  </nav>
+
+  <div class="container">
+    <!-- Hero -->
+    <header class="hero">
+      <h1>3IT Brand Book</h1>
+      <p>A comprehensive guide to maintaining visual consistency across all brand touchpoints.</p>
+    </header>
+
+    <!-- Brand Identity -->
+    <section id="brand-identity">
+      <h2>Brand Identity</h2>
+
+      <h3>Design Philosophy</h3>
+      <p>3IT embodies a <strong>developer-first, tech-forward aesthetic</strong> inspired by:</p>
+      <ul>
+        <li>Terminal and code editor interfaces</li>
+        <li>macOS design conventions</li>
+        <li>Cyberpunk and neon aesthetics</li>
+        <li>Minimalist yet detailed approach</li>
+      </ul>
+
+      <h3>Brand Attributes</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Attribute</th>
+            <th>Expression</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Innovative</strong></td><td>Cutting-edge animations, modern UI patterns</td></tr>
+          <tr><td><strong>Technical</strong></td><td>Code-inspired elements, monospace fonts</td></tr>
+          <tr><td><strong>Professional</strong></td><td>Clean layouts, consistent spacing</td></tr>
+          <tr><td><strong>Dynamic</strong></td><td>Smooth transitions, interactive elements</td></tr>
+          <tr><td><strong>Trustworthy</strong></td><td>Dark, stable backgrounds, reliable feel</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Tone of Voice</h3>
+      <ul>
+        <li><strong>Technical but accessible</strong> - Speak to developers without alienating others</li>
+        <li><strong>Confident</strong> - We know our craft</li>
+        <li><strong>Forward-thinking</strong> - Always looking ahead</li>
+        <li><strong>Direct</strong> - No fluff, get to the point</li>
+      </ul>
+    </section>
+
+    <!-- Color System -->
+    <section id="color-system">
+      <h2>Color System</h2>
+
+      <h3>Background Colors</h3>
+      <div class="color-grid">
+        <div class="color-swatch">
+          <div class="color-preview" style="background: #0d1117; color: #c9d1d9;">#0d1117</div>
+          <div class="color-info">
+            <strong>Dark Primary</strong>
+            <span>Main backgrounds</span>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-preview" style="background: #161b22; color: #c9d1d9;">#161b22</div>
+          <div class="color-info">
+            <strong>Dark Secondary</strong>
+            <span>Cards, panels</span>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-preview" style="background: #21262d; color: #c9d1d9;">#21262d</div>
+          <div class="color-info">
+            <strong>Dark Tertiary</strong>
+            <span>Headers, dividers</span>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-preview" style="background: #30363d; color: #c9d1d9;">#30363d</div>
+          <div class="color-info">
+            <strong>Dark Quaternary</strong>
+            <span>Borders, subtle elements</span>
+          </div>
+        </div>
+      </div>
+
+      <h3>Accent Colors</h3>
+      <div class="color-grid">
+        <div class="color-swatch">
+          <div class="color-preview" style="background: #58a6ff; color: #0d1117;">#58a6ff</div>
+          <div class="color-info">
+            <strong>Cyan</strong>
+            <span>Primary accent, links, CTAs</span>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-preview" style="background: #7ee787; color: #0d1117;">#7ee787</div>
+          <div class="color-info">
+            <strong>Green</strong>
+            <span>Success, highlights, logo</span>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-preview" style="background: #d2a8ff; color: #0d1117;">#d2a8ff</div>
+          <div class="color-info">
+            <strong>Purple</strong>
+            <span>Secondary accent</span>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-preview" style="background: #ffa657; color: #0d1117;">#ffa657</div>
+          <div class="color-info">
+            <strong>Orange</strong>
+            <span>Warnings, alternative accent</span>
+          </div>
+        </div>
+      </div>
+
+      <h3>Text Colors</h3>
+      <div class="color-grid">
+        <div class="color-swatch">
+          <div class="color-preview" style="background: #0d1117; color: #c9d1d9;">Aa</div>
+          <div class="color-info">
+            <strong>Primary Text</strong>
+            <span>#c9d1d9 - Main body text</span>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-preview" style="background: #0d1117; color: #8b949e;">Aa</div>
+          <div class="color-info">
+            <strong>Secondary Text</strong>
+            <span>#8b949e - Descriptions, labels</span>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-preview" style="background: #0d1117; color: #484f58;">Aa</div>
+          <div class="color-info">
+            <strong>Tertiary Text</strong>
+            <span>#484f58 - Disabled, hints</span>
+          </div>
+        </div>
+      </div>
+
+      <h3>Extended Neon Palette</h3>
+      <div class="color-grid">
+        <div class="color-swatch">
+          <div class="color-preview" style="background: #bf5af2; color: #0d1117;">#bf5af2</div>
+          <div class="color-info">
+            <strong>Neon Purple</strong>
+            <span>Glows, highlights</span>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-preview" style="background: #5ce1e6; color: #0d1117;">#5ce1e6</div>
+          <div class="color-info">
+            <strong>Neon Cyan</strong>
+            <span>Accents</span>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-preview" style="background: #ff6ac1; color: #0d1117;">#ff6ac1</div>
+          <div class="color-info">
+            <strong>Neon Pink</strong>
+            <span>Special elements</span>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-preview" style="background: #5e9eff; color: #0d1117;">#5e9eff</div>
+          <div class="color-info">
+            <strong>Neon Blue</strong>
+            <span>Links, interactions</span>
+          </div>
+        </div>
+      </div>
+
+      <h3>macOS Traffic Light Colors</h3>
+      <div class="color-grid">
+        <div class="color-swatch">
+          <div class="color-preview" style="background: #ff5f56; color: #0d1117;">#ff5f56</div>
+          <div class="color-info">
+            <strong>Red</strong>
+            <span>Close (left)</span>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-preview" style="background: #ffbd2e; color: #0d1117;">#ffbd2e</div>
+          <div class="color-info">
+            <strong>Yellow</strong>
+            <span>Minimize (center)</span>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-preview" style="background: #27ca3f; color: #0d1117;">#27ca3f</div>
+          <div class="color-info">
+            <strong>Green</strong>
+            <span>Maximize (right)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Typography -->
+    <section id="typography">
+      <h2>Typography</h2>
+
+      <h3>Font Families</h3>
+
+      <div class="type-demo">
+        <div class="type-sample">
+          <div class="type-sample-unbounded" style="font-size: 32px; font-weight: 700;">Unbounded Bold</div>
+          <div class="type-sample-unbounded" style="font-size: 24px; font-weight: 600;">Headlines & Brand Name</div>
+          <div class="type-label">font-family: 'Unbounded', sans-serif</div>
+        </div>
+
+        <div class="type-sample">
+          <div class="type-sample-inter" style="font-size: 18px; font-weight: 400;">Inter Regular - The quick brown fox jumps over the lazy dog.</div>
+          <div class="type-sample-inter" style="font-size: 16px; font-weight: 600;">Inter Semibold - Body text and UI elements</div>
+          <div class="type-label">font-family: 'Inter', sans-serif</div>
+        </div>
+
+        <div class="type-sample">
+          <div class="type-sample-mono" style="font-size: 14px;">const greeting = "Hello, World!";</div>
+          <div class="type-sample-mono" style="font-size: 14px; color: var(--green);">// Code and terminal content</div>
+          <div class="type-label">font-family: 'JetBrains Mono', monospace</div>
+        </div>
+      </div>
+
+      <h3>Type Scale</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Desktop</th>
+            <th>Mobile</th>
+            <th>Weight</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>H1 (Hero)</td><td>64px / 4rem</td><td>32px / 2rem</td><td>700</td></tr>
+          <tr><td>H2 (Section)</td><td>48px / 3rem</td><td>32px / 2rem</td><td>700</td></tr>
+          <tr><td>H3 (Card Title)</td><td>20px / 1.25rem</td><td>18px / 1.125rem</td><td>600</td></tr>
+          <tr><td>Body</td><td>16px / 1rem</td><td>14px / 0.875rem</td><td>400</td></tr>
+          <tr><td>Small</td><td>14px / 0.875rem</td><td>12px / 0.75rem</td><td>400</td></tr>
+          <tr><td>Code/Terminal</td><td>14px / 0.875rem</td><td>11px</td><td>400</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Logo Usage -->
+    <section id="logo-usage">
+      <h2>Logo Usage</h2>
+
+      <h3>Primary Logo</h3>
+      <div class="card">
+        <div style="display: flex; align-items: center; gap: 12px; font-family: 'Unbounded', sans-serif; font-size: 32px; font-weight: 700; color: var(--green);">
+          <div style="width: 40px; height: 40px; background: var(--bg-tertiary); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+            <span style="font-size: 20px;">3</span>
+          </div>
+          3IT
+        </div>
+        <p style="margin-top: 16px; margin-bottom: 0;">Logo icon + "3IT" wordmark in Unbounded font, Green (#7ee787)</p>
+      </div>
+
+      <h3>Logo Specifications</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Context</th>
+            <th>Icon Size</th>
+            <th>Text Size</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Header</td><td>24-28px</td><td>18-24px</td></tr>
+          <tr><td>Footer</td><td>32px</td><td>20px</td></tr>
+          <tr><td>Social Media Avatar</td><td>128px min</td><td>N/A</td></tr>
+          <tr><td>Favicon</td><td>32x32px</td><td>N/A</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Logo Don'ts</h3>
+      <ul>
+        <li>Don't stretch or distort</li>
+        <li>Don't change the green color</li>
+        <li>Don't add effects (shadows, outlines)</li>
+        <li>Don't place on low-contrast backgrounds</li>
+        <li>Don't rotate or skew</li>
+      </ul>
+    </section>
+
+    <!-- Visual Elements -->
+    <section id="visual-elements">
+      <h2>Visual Elements</h2>
+
+      <h3>Borders & Corners</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Border</th>
+            <th>Radius</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Cards</td><td>1px solid #30363d</td><td>8-12px</td></tr>
+          <tr><td>Buttons</td><td>1px solid accent</td><td>6-8px</td></tr>
+          <tr><td>Inputs</td><td>1px solid #30363d</td><td>6-8px</td></tr>
+          <tr><td>Badges</td><td>1px solid accent/30%</td><td>4px or full</td></tr>
+          <tr><td>Avatars</td><td>2px solid #30363d</td><td>Full (circle)</td></tr>
+        </tbody>
+      </table>
+
+      <h3>macOS Window Style</h3>
+      <div class="macos-window">
+        <div class="macos-header">
+          <div class="traffic-light traffic-red"></div>
+          <div class="traffic-light traffic-yellow"></div>
+          <div class="traffic-light traffic-green"></div>
+          <span class="macos-title">terminal.tsx</span>
+        </div>
+        <div class="macos-content">
+          <span style="color: var(--purple);">const</span> <span style="color: var(--cyan);">greeting</span> = <span style="color: var(--green);">"Hello, 3IT!"</span>;<br>
+          <span style="color: var(--purple);">console</span>.<span style="color: var(--cyan);">log</span>(greeting);
+        </div>
+      </div>
+
+      <h3>Background Grid Pattern</h3>
+      <div style="height: 150px; background: var(--bg-primary); background-image: linear-gradient(rgba(88, 166, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(88, 166, 255, 0.05) 1px, transparent 1px); background-size: 40px 40px; border: 1px solid var(--border); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); font-size: 14px;">
+        40px grid pattern with 5% cyan lines
+      </div>
+    </section>
+
+    <!-- Components -->
+    <section id="components">
+      <h2>Components</h2>
+
+      <h3>Buttons</h3>
+      <div class="component-demo">
+        <button class="btn-primary">Primary Button</button>
+        <button class="btn-secondary">Secondary Button</button>
+      </div>
+
+      <h3>Badges/Tags</h3>
+      <div class="component-demo">
+        <span class="badge">v1.0.0</span>
+        <span class="badge badge-green">Active</span>
+        <span class="badge badge-purple">Featured</span>
+      </div>
+
+      <h3>Form Inputs</h3>
+      <div class="component-demo">
+        <input type="text" class="input-demo" placeholder="Enter your email...">
+      </div>
+
+      <h3>Cards</h3>
+      <div class="card">
+        <h4 style="margin-top: 0;">Card Title</h4>
+        <p style="margin-bottom: 0;">This is a standard card with hover effect. Cards use bg-secondary (#161b22) with a 1px border.</p>
+      </div>
+    </section>
+
+    <!-- Animation & Motion -->
+    <section id="animation">
+      <h2>Animation & Motion</h2>
+
+      <h3>Duration Guidelines</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Duration</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Micro-interactions</td><td>150-200ms</td></tr>
+          <tr><td>UI transitions</td><td>200-300ms</td></tr>
+          <tr><td>Entry animations</td><td>500-600ms</td></tr>
+          <tr><td>Continuous loops</td><td>2-8s</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Animation Examples</h3>
+      <div class="animation-demo">
+        <div class="anim-box anim-glow">Glow</div>
+        <div class="anim-box anim-float">Float</div>
+      </div>
+
+      <h3>Hover Interactions</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Effect</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Buttons</td><td>Brightness +10%, subtle glow</td></tr>
+          <tr><td>Cards</td><td>Border color change, inner glow</td></tr>
+          <tr><td>Links</td><td>Color shift to accent</td></tr>
+          <tr><td>Images</td><td>Scale 1.02-1.05</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Social Media Guidelines -->
+    <section id="social-media">
+      <h2>Social Media Guidelines</h2>
+
+      <h3>Content Sizing</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Platform</th>
+            <th>Size</th>
+            <th>Safe Area</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Instagram Post</td><td>1080x1080px</td><td>100px margins</td></tr>
+          <tr><td>Instagram Story</td><td>1080x1920px</td><td>150px top/bottom</td></tr>
+          <tr><td>Twitter/X</td><td>1200x675px</td><td>80px margins</td></tr>
+          <tr><td>LinkedIn</td><td>1200x627px</td><td>80px margins</td></tr>
+          <tr><td>OG Image</td><td>1200x630px</td><td>100px margins</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Post Template Guidelines</h3>
+      <ul>
+        <li>Use <strong>#0d1117</strong> for standard backgrounds</li>
+        <li>Use <strong>Unbounded</strong> for headlines</li>
+        <li>Use <strong>Inter</strong> for body text</li>
+        <li>Maintain high contrast for readability</li>
+        <li>Include logo in corner when appropriate</li>
+      </ul>
+    </section>
+
+    <!-- Do's and Don'ts -->
+    <section id="dos-donts">
+      <h2>Do's and Don'ts</h2>
+
+      <div class="do-dont-grid">
+        <div class="do-box">
+          <h4>Do's</h4>
+          <ul>
+            <li>Use the color system consistently</li>
+            <li>Maintain dark theme</li>
+            <li>Use proper typography hierarchy</li>
+            <li>Add subtle animations</li>
+            <li>Keep layouts clean</li>
+            <li>Use code/terminal aesthetics</li>
+          </ul>
+        </div>
+        <div class="dont-box">
+          <h4>Don'ts</h4>
+          <ul>
+            <li>Don't use light mode</li>
+            <li>Don't use bright colors on large areas</li>
+            <li>Don't overcrowd layouts</li>
+            <li>Don't use generic stock photos</li>
+            <li>Don't skip hover states</li>
+            <li>Don't stretch the logo</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Reference -->
+    <section id="quick-reference">
+      <h2>Quick Reference</h2>
+
+      <div class="quick-ref">
+        <div class="quick-ref-item">
+          <h5>Backgrounds</h5>
+          <code>--bg-dark: #0d1117</code>
+          <code>--bg-card: #161b22</code>
+          <code>--bg-header: #21262d</code>
+          <code>--border: #30363d</code>
+        </div>
+        <div class="quick-ref-item">
+          <h5>Accents</h5>
+          <code>--cyan: #58a6ff</code>
+          <code>--green: #7ee787</code>
+          <code>--purple: #d2a8ff</code>
+          <code>--orange: #ffa657</code>
+        </div>
+        <div class="quick-ref-item">
+          <h5>Text</h5>
+          <code>--text-primary: #c9d1d9</code>
+          <code>--text-secondary: #8b949e</code>
+        </div>
+        <div class="quick-ref-item">
+          <h5>Fonts</h5>
+          <code>Unbounded (Headlines)</code>
+          <code>Inter (Body)</code>
+          <code>JetBrains Mono (Code)</code>
+        </div>
+        <div class="quick-ref-item">
+          <h5>Border Radius</h5>
+          <code>--radius-sm: 6px</code>
+          <code>--radius-md: 8px</code>
+          <code>--radius-lg: 12px</code>
+        </div>
+        <div class="quick-ref-item">
+          <h5>Transitions</h5>
+          <code>all 0.2s ease</code>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>3IT Brand Book v1.0 | January 2025</p>
+    <p style="margin-top: 8px; font-size: 12px;">This brand book is a living document. Update it as the brand evolves.</p>
+  </footer>
+
+  <!-- html2pdf.js library for PDF generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+  <script>
+    function downloadPDF() {
+      const btn = document.querySelector('.download-btn');
+      const btnText = document.getElementById('btn-text');
+      const originalText = btnText.textContent;
+
+      // Show loading state
+      btn.disabled = true;
+      btnText.textContent = 'Generating...';
+      btn.style.opacity = '0.7';
+
+      // Hide nav for PDF
+      const nav = document.querySelector('.nav');
+      nav.style.display = 'none';
+
+      // Adjust container padding
+      const container = document.querySelector('.container');
+      const originalPadding = container.style.paddingTop;
+      container.style.paddingTop = '32px';
+
+      // Stop animations
+      const animatedElements = document.querySelectorAll('.anim-glow, .anim-float');
+      animatedElements.forEach(el => {
+        el.style.animation = 'none';
+      });
+
+      const element = document.body;
+      const opt = {
+        margin: [10, 10, 10, 10],
+        filename: '3IT-Brand-Book.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: {
+          scale: 2,
+          useCORS: true,
+          backgroundColor: '#0d1117',
+          logging: false,
+          letterRendering: true
+        },
+        jsPDF: {
+          unit: 'mm',
+          format: 'a4',
+          orientation: 'portrait'
+        },
+        pagebreak: {
+          mode: ['avoid-all', 'css', 'legacy'],
+          before: '.page-break-before',
+          after: '.page-break-after',
+          avoid: ['table', '.card', '.macos-window', '.color-grid', '.color-swatch', '.do-box', '.dont-box', '.quick-ref-item']
+        }
+      };
+
+      html2pdf().set(opt).from(element).save().then(() => {
+        // Restore nav
+        nav.style.display = 'flex';
+        container.style.paddingTop = originalPadding;
+
+        // Restore animations
+        animatedElements.forEach(el => {
+          el.style.animation = '';
+        });
+
+        // Restore button
+        btn.disabled = false;
+        btnText.textContent = originalText;
+        btn.style.opacity = '1';
+      }).catch(err => {
+        console.error('PDF generation failed:', err);
+        nav.style.display = 'flex';
+        container.style.paddingTop = originalPadding;
+        btn.disabled = false;
+        btnText.textContent = 'Error - Try Again';
+        btn.style.opacity = '1';
+        setTimeout(() => {
+          btnText.textContent = originalText;
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
